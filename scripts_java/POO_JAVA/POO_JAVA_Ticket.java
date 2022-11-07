@@ -22,23 +22,46 @@ class Ligne
     }
 }
 
+class Ticket{
+    String client = "";
+    List<Ligne> lignesTicket = new ArrayList<>();
+    public Ticket(String nom){
+        this.client=nom;
+    }
+
+    public void addAchat (Ligne l){
+        lignesTicket.add(l);
+    }
+
+    public void showTicket (){
+        System.out.println("===============================");
+        System.out.println(String.format("client %8.25s",this.client));
+        for(Ligne l: lignesTicket){
+            l.showLine();
+        }
+        System.out.println(String.format("total %8.2f",Ligne.totalPrice));
+        System.out.println("===============================");
+    }
+
+    
+}
+
+
 public class POO_JAVA_Ticket {
     static List<Ligne> lignes = new ArrayList<>();
     
     public static void main(String[] args) {
-        lignes.add(new Ligne("Romarin",1.0,1.5));
-        lignes.add(new Ligne("Salami",1.0,1.5));
-        lignes.add(new Ligne("Cordons Bleus",1.0,1.5));
-        lignes.add(new Ligne("Saucisse de poulet",1.0,1.5));
-        lignes.add(new Ligne("Boeuf",1.0,1.5));
-        lignes.add(new Ligne("Porc",1.0,1.5));
-        lignes.add(new Ligne("Salade",1.0,1.5));
+        Ticket t1 = new Ticket("toto dutrou");
 
-        for(Ligne l:lignes){
-            l.showLine();
-        }
-        System.out.println(String.format("total %8.2f",Ligne.totalPrice));
+        t1.addAchat(new Ligne("Romarin",1.0,1.5));
+        t1.addAchat(new Ligne("Salami",1.0,1.5));
+        t1.addAchat(new Ligne("Cordons Bleus",1.0,1.5));
+        t1.addAchat(new Ligne("Saucisse de poulet",1.0,1.5));
+        t1.addAchat(new Ligne("Boeuf",1.0,1.5));
+        t1.addAchat(new Ligne("Porc",1.0,1.5));
+        t1.addAchat(new Ligne("Salade",1.0,1.5));
 
+        t1.showTicket();
 
     }
 }
