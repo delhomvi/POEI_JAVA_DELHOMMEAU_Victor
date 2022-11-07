@@ -16,7 +16,6 @@ class Ligne
         this.qte=qte;
         totalPrice+=qte*pu;
     } 
-3dfghwdthdfg
 class Ticket{
     String client = "";
     List<Ligne> lignesTicket = new ArrayList<>();
