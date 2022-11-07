@@ -1,4 +1,4 @@
-package fr.delhomvi.Magasin;
+package scripts_java.Magasin;
 
 // Importations des biblio utiles
 import java.io.*;

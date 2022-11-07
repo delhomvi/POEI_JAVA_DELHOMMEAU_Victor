@@ -1,4 +1,4 @@
-package delhomvi;
+package scripts_java;
 
 import java.util.*;
 

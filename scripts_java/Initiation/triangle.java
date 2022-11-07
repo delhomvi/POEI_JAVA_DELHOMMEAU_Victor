@@ -1,4 +1,4 @@
-package delhomvi.Initiation;
+package scripts_java.Initiation;
 public class triangle {
     public static void main( String[] args )
     {

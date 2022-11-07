@@ -1,4 +1,4 @@
-package delhomvi.Initiation;
+package scripts_java.Initiation;
 public class Surface {
 
     public static double surfaceRect( double lar, double longueur )

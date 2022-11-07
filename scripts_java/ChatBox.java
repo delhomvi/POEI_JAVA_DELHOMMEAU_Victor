@@ -1,3 +1,4 @@
+package scripts_java;
 import java.util.*;
 public class ChatBox {
     public static void main(String[] args) {

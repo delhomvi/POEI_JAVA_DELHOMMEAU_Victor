@@ -1,4 +1,4 @@
-package delhomvi;
+package scripts_java;
 
 public class AddArticle {
     public static void addArticle(){

@@ -1,4 +1,4 @@
-package delhomvi.Initiation;
+package scripts_java.Initiation;
 //
 // Par DELHOMMEAU Victor
 //

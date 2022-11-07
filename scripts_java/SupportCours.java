@@ -1,5 +1,8 @@
+package scripts_java;
 import java.util.*;
-import delhomvi.Initiation.Surface;
+
+import scripts_java.Initiation.Surface;
+
 import java.io.*;
 
 

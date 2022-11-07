@@ -1,3 +1,4 @@
+package scripts_java;
 /*
  * 
  *  Exo par Victor DELHOMMEAU
