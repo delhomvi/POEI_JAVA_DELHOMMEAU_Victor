@@ -63,5 +63,10 @@ public class POO_JAVA_Ticket {
 
         t1.showTicket();
 
+        Ticket t2 = new Ticket("tata dutrou");
+
+        t2.addAchat(new Ligne("Romarin",1.0,1.5));
+        t2.addAchat(new Ligne("Salami",1.0,1.5));
+        t2.showTicket();
     }
 }
