@@ -8,19 +8,14 @@ class Ligne
     String libel    ="" ;
     Double prix_unit=0.0;
     Double qte      =0.0;
-    static Double totalPrice = 0.0;
-    
+    public static Double totalPrice = 0.0;
+
     public Ligne(String nom, Double pu, Double qte){
         this.libel=nom;
         this.prix_unit=pu;
         this.qte=qte;
         totalPrice+=qte*pu;
     } 
-
-    public void showLine(){
-        System.out.println(String.format("%25s %8.2f %8.2f %8.2f",this.libel,this.prix_unit,this.qte,this.prix_unit*this.qte));
-    }
-}
 
 class Ticket{
     String client = "";

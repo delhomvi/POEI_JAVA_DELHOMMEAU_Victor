@@ -1,4 +1,4 @@
-package scripts_java;
+package scripts_java.S1_java_init;
 import java.io.*;
 
 public class WriteTicket {

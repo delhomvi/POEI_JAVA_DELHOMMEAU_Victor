@@ -1,4 +1,4 @@
-package scripts_java;
+package scripts_java.S1_java_init;
 
 public class AddArticle {
     public static void addArticle(){
