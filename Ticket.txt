@@ -1,0 +1,15 @@
+
+------------------
+Magasin storeArray (ou alors store_array)
+Dans une certaine virtual machine
+Avec tel Version de build
+------------------
+
+| index |         article |  prix | quantite | total |
+|     0 |           Pomme |  1,50 |     0,52 |  0,78 |
+|     1 |           Poire |  1,20 |     0,88 |  1,06 |
+|     2 |     Mandarinnes | 18,20 |     0,60 | 10,92 |
+|     3 |          Orange |  2,50 |     0,50 |  1,25 |
+|     4 |         Tomates |  4,00 |     0,80 |  3,20 |
+
+Total a payer: 17.206euro(s)

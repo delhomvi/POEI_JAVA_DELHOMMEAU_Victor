@@ -1,0 +1,6 @@
+Fourni le jour ou on demare le fil rouge l'enoncé
+fait en groupe
+angular pour l'aspect site
+springboot
+sql
+
