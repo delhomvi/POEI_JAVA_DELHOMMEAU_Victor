@@ -129,14 +129,22 @@ class Porcherie extends Ferme{
     }
 }
 
+class runFerme{
+    public runFerme(){
+        Poulailler p1 = new Poulailler();
+        Champs c1 = new Champs();
+        Porcherie pp1 = new Porcherie();
+        System.out.println("--------------");
+        p1.whosInside();
+        System.out.println("--------------");
+        c1.whosInside();
+        System.out.println("--------------");
+        pp1.whosInside();
+    }
+}
 public class POO_JAVA_Ferme {
     public static void main(String[] args) {
-        runFerme();
+        runFerme rf =new runFerme();
     }
 
-    public static void runFerme(){
-        Poulailler.whosInside();
-        Porcherie.whosInside();
-        Champs.whosInside();
-    }
 }
