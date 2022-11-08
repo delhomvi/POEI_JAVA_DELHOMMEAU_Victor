@@ -12,6 +12,10 @@ class Point{
         System.out.println(String.format("Point en (%d , %d)",this.x,this.y));
     }
 
+    public void move(int xmouv, int ymouv){
+        this.x+=xmouv;
+        this.y+=ymouv;
+    }
 }
 
 class Cercle extends Point{
@@ -74,6 +78,8 @@ public class POO_JAVA_Figure {
         car1.showFig();
 
         Rectangle r1 = new Rectangle(5,6,7,8);
+        r1.showFig();
+        r1.move(10, 10);
         r1.showFig();
 
 
