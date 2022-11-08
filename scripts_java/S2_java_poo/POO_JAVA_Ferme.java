@@ -71,28 +71,72 @@ class Cochon extends Animaux{
     }
 }
 
+class Ferme{
+    String nom,whatInside;
+    public Ferme(String nom,String whatInside){
+        this.nom=nom;
+        this.whatInside=whatInside;
+    }
 
+    public void composedOf(){
+        System.out.println(String.format("Le/La %s est composée de %s",this.nom,this.whatInside));
+    }
+}
 
-public class POO_JAVA_Ferme {
-    public static void main(String[] args) {
-        Poule p1 = new Poule("Cocote","courir dans la grange");
-        Poule p2 = new Poule("Margotte","dormir");
-        Poule p3 = new Poule("Cracotte","pondre");
-        
-        Vache v1 = new Vache("Marguerite","regarder le train");
-        Vache v2 = new Vache("Brigitte","s'allonger sur l'herbe");
-        
-        Cochon c1 = new Cochon("Porcinet","Manger");
-        Cochon c2 = new Cochon("Vianet","Se rouler dans la boue");
-        
+class Poulailler extends Ferme{
+    Poule p1,p2,p3;
+    public Poulailler(){
+        super("poulailler", "poule");
+        this.p1 = new Poule("Cocote","courir dans la grange");
+        this.p2 = new Poule("Margotte","dormir");
+        this.p3 = new Poule("Cracotte","pondre");
+    }
+    public void whosInside(){
+        composedOf();
         p1.speak();
         p2.speak();
         p3.speak();
+    }
+}
+
+class Champs extends Ferme{
+    Vache v1,v2;
+    public Champs(){
+        super("Champs", "vache");
+        this.v1 = new Vache("Marguerite","regarder le train");
+        this.v2 = new Vache("Brigitte","s'allonger sur l'herbe");
+    }
+
+    public void whosInside(){
+        composedOf();
         v1.speak();
         v2.speak();
+    }
+}
+
+class Porcherie extends Ferme{
+    Cochon c1,c2;
+    public Porcherie(){
+        super("Porcherie", "cochon");
+        this.c1 = new Cochon("Porcinet","Manger");
+        this.c2 = new Cochon("Vianet","Se rouler dans la boue");
+    }
+
+    public void whosInside(){
+        composedOf();
         c1.speak();
         c2.speak();
-        
+    }
+}
 
+public class POO_JAVA_Ferme {
+    public static void main(String[] args) {
+        runFerme();
+    }
+
+    public static void runFerme(){
+        Poulailler.whosInside();
+        Porcherie.whosInside();
+        Champs.whosInside();
     }
 }
