@@ -1,4 +1,4 @@
-package scripts_java.Magasin;
+package scripts_java.S1_java_init.Magasin;
 
 // Importations des biblio utiles
 import java.io.*;

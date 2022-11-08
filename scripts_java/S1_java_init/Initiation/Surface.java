@@ -1,4 +1,4 @@
-package scripts_java.Initiation;
+package scripts_java.S1_java_init.Initiation;
 public class Surface {
 
     public static double surfaceRect( double lar, double longueur )

@@ -1,7 +1,7 @@
 package scripts_java;
 import java.util.*;
 
-import scripts_java.Initiation.Surface;
+import scripts_java.S1_java_init.Initiation.Surface;
 
 import java.io.*;
 

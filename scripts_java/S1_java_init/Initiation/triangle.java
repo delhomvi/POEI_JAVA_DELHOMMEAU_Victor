@@ -1,4 +1,4 @@
-package scripts_java.Initiation;
+package scripts_java.S1_java_init.Initiation;
 public class triangle {
     public static void main( String[] args )
     {
