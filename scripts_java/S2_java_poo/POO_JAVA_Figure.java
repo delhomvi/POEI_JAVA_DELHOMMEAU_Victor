@@ -110,8 +110,6 @@ public class POO_JAVA_Figure {
 
         RectanglePoints rr1 = new RectanglePoints(5,6,7,8);
         rr1.showFig();
-        rr1.move(10, 10);
-        rr1.showFig();
 
     }
 }
