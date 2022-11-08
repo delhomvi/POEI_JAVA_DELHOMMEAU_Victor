@@ -16,27 +16,31 @@ class Point{
 
 class Cercle extends Point{
     Integer r;
+    Double surface;
     public Cercle(int x,int y,int r){
         super(x, y);
         this.r=r;
+        this.surface=(Double) (Math.PI*r*r);
     }
 
     public void showFig(){
-        System.out.println(String.format("Cercle en (%d , %d) de rayon %d",this.x,this.y,this.r));
+        System.out.println(String.format("Cercle en (%d , %d) de rayon %d et de surface %f",this.x,this.y,this.r,this.surface));
     }
 
 }
 
 class Rectangle extends Point{
     Integer longg,larg;
+    Integer surface;
     public Rectangle(int x,int y,int longg,int larg){
         super(x, y);
         this.longg=longg;
         this.larg=larg;
+        this.surface=longg*larg;
     }
 
     public void showFig(){
-        System.out.println(String.format("Rectangle en (%d , %d) de cotes %d*%d",this.x,this.y,this.longg,this.larg));
+        System.out.println(String.format("Rectangle en (%d , %d) de cotes %d*%d et de surface %d",this.x,this.y,this.longg,this.larg,this.surface));
     }
 
 }
@@ -46,10 +50,11 @@ class Carre extends Rectangle{
     public Carre(int x,int y,int cot){
         super(x, y,cot,cot);
         this.cote=cot;
+        this.surface=cot*cot;
     }
 
     public void showFig(){
-        System.out.println(String.format("Carre en (%d , %d) de cote %d",this.x,this.y,this.cote));
+        System.out.println(String.format("Carre en (%d , %d) de cote %d et de surface %d",this.x,this.y,this.cote,this.surface));
     }
 
 }
