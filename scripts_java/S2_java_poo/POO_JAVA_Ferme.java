@@ -56,7 +56,7 @@ class Vache extends Animaux{
     }
 
     public void speak(){
-        System.out.println(String.format("Meuh, je suis la poule %s, je mange de/des %s, je suis de la famille des %s et j'aime bien faire de/des %s",this.nom,this.food,this.specie,this.whatDooing));
+        System.out.println(String.format("Meuh, je suis la vache %s, je mange de/des %s, je suis de la famille des %s et j'aime bien faire de/des %s",this.nom,this.food,this.specie,this.whatDooing));
     }
 
 }
