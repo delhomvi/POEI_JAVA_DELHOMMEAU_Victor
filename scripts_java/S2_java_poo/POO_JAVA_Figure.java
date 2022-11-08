@@ -49,6 +49,33 @@ class Rectangle extends Point{
 
 }
 
+class RectanglePoints extends Point{
+    Integer longg,larg;
+    Integer surface;
+    Point HautGauche, HautDroit, BasGauche,BasDroit; 
+    
+    public RectanglePoints(int x,int y,int longg,int larg){
+        super(x, y);
+        this.longg=longg;
+        this.larg=larg;
+        this.surface=longg*larg;
+        this.HautGauche= new Point(x, y);
+        this.HautDroit= new Point(x+longg, y);
+        this.BasGauche= new Point(x, y+larg);
+        this.BasDroit= new Point(x+longg, y+larg);
+    }
+
+    public void showFig(){
+        System.out.println(String.format("Rectangle avec les points, origine en (%d , %d) de cotes %d*%d et de surface %d",this.x,this.y,this.longg,this.larg,this.surface));
+        System.out.println("Points du rectangle :");
+        HautGauche.showFig();
+        BasGauche.showFig();
+        HautDroit.showFig();
+        BasDroit.showFig();
+    }
+
+}
+
 class Carre extends Rectangle{
     Integer cote;
     public Carre(int x,int y,int cot){
@@ -62,6 +89,7 @@ class Carre extends Rectangle{
     }
 
 }
+
 
 
 
@@ -79,9 +107,11 @@ public class POO_JAVA_Figure {
 
         Rectangle r1 = new Rectangle(5,6,7,8);
         r1.showFig();
-        r1.move(10, 10);
-        r1.showFig();
 
+        RectanglePoints rr1 = new RectanglePoints(5,6,7,8);
+        rr1.showFig();
+        rr1.move(10, 10);
+        rr1.showFig();
 
     }
 }
