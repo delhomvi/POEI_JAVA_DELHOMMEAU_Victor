@@ -172,6 +172,18 @@ class Cuisinier extends Salaries{
     }
 }
 
+// Benevoles -------------------------------------------------
+class Benevoles extends Salaries{
+    Benevoles(String n,String pn,String adr,String c,Integer a,String wd){
+        super(n, pn, adr, c, a);
+        this.fonction="Benevole";
+        this.whatDoing=wd;
+    }
+
+}
+
+
+
 // Main -------------------------------------------------
 public class POO_JAVA_Ecole {
     static ArrayList<Usagers> Personnels = new ArrayList<>()  ;
@@ -188,6 +200,7 @@ public class POO_JAVA_Ecole {
         Personnels.add(new Secretaires("Secrets", "Victoria", "Un peu loins de l'école", "Telephone de sa maison", 59));
         Personnels.add(new Bibliothequaire("Biblots", "Eleonore", "Un peu loins de l'école", "Telephone de sa maison", 54));
         Personnels.add(new Cuisinier("Cuiseur", "Eric", "Un peu loins de l'école", "Telephone de sa maison", 40));
+        Personnels.add(new Benevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique"));
         
         // Affichage des resultats
         System.out.println("------------------");
