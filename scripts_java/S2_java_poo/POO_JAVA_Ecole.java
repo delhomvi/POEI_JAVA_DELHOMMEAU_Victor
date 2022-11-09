@@ -170,6 +170,7 @@ class Contractuel extends Salaries{
         this.statut="Contractuel";
 }
 }
+
 class Enseignant_stat extends Salaries{
     public Enseignant_stat(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a, Hor);
