@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 // Ecole -------------------------------------------------
 class Ecole{
+    // Initialisation de l'école
     ArrayList<Usagers> Personnels = new ArrayList<>()  ;
     String nom;
     String adresse;
@@ -27,33 +28,28 @@ class Ecole{
     public ArrayList<Usagers> getPersonnels() {
         return Personnels;
     }
-
     public void setPersonnels(ArrayList<Usagers> personnels) {
         Personnels = personnels;
     }
-
     public String getNom() {
         return nom;
     }
-
     public void setNom(String nom) {
         this.nom = nom;
     }
     public String getAdresse() {
         return adresse;
     }
-
     public void setAdresse(String adresse) {
         this.adresse = adresse;
     }
-
     public String getContact() {
         return Contact;
     }
-
     public void setContact(String contact) {
         Contact = contact;
     }
+    
     // Autres fonctions
     public void addEleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
         Personnels.add(new Eleves(n,pn,adr,c,a ,classe,Hor));
