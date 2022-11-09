@@ -55,6 +55,13 @@ class Usagers{
     public void setContact(String contact) {
         this.contact = contact;
     }
+    
+    public String getFonction() {
+        return fonction;
+    }
+    public void setFonction(String fonction) {
+        this.fonction = fonction;
+    }
 
     // Constructeur
     public Usagers(String n,String pn,String adr,String c,Integer a ){
@@ -105,13 +112,20 @@ class Eleves extends Usagers{
 // Salariés -------------------------------------------------
 class Salaries extends Usagers{
     String whatDoing = "indefinis";
+    Double Salaire =0.0;
     
     // Getter et setter
-    public String getFonction() {
-        return fonction;
+    public String getWhatDoing() {
+        return whatDoing;
     }
-    public void setFonction(String fonction) {
-        this.fonction = fonction;
+    public void setWhatDoing(String whatDoing) {
+        this.whatDoing = whatDoing;
+    }
+    public Double getSalaire() {
+        return Salaire;
+    }
+    public void setSalaire(Double salaire) {
+        Salaire = salaire;
     }
     
     // Constructeur
@@ -131,6 +145,7 @@ class Enseignants extends Salaries{
         super(n, pn, adr, c, a);
         this.fonction="Enseignant";
         this.whatDoing="Enseigner les bases aux eleves";
+        this.Salaire=2000.0;
     }
 
     
@@ -142,6 +157,7 @@ class Surveillants extends Salaries{
         super(n, pn, adr, c, a);
         this.fonction="Surveillants";
         this.whatDoing="Surveiller les eleves";
+        this.Salaire=1400.0;
     }
 }
 
@@ -151,6 +167,7 @@ class Secretaires extends Salaries{
         super(n, pn, adr, c, a);
         this.fonction="Secretaires";
         this.whatDoing="Effectuer des taches administratives";
+        this.Salaire=1400.0;
     }
 }
 
@@ -160,6 +177,7 @@ class Bibliothequaire extends Salaries{
         super(n, pn, adr, c, a);
         this.fonction="Bibliothequaire";
         this.whatDoing="Gerer la bibliothèque";
+        this.Salaire=1400.0;
     }
 }
 
@@ -169,6 +187,7 @@ class Cuisinier extends Salaries{
         super(n, pn, adr, c, a);
         this.fonction="Cuisinier";
         this.whatDoing="Preparer les repas";
+        this.Salaire=1400.0;
     }
 }
 
