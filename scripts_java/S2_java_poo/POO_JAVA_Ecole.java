@@ -318,7 +318,7 @@ class Ecole{
     }
 }
 
-// Classe
+// Classe -------------------------------------------------
 class Classes{
     // Initialisation de l'école
     ArrayList<Usagers> ElevesInClasse = new ArrayList<>()  ;
@@ -377,6 +377,24 @@ class Classes{
     }
 
 }
+
+// Bulletin -------------------------------------------------
+class Bulletin{
+    public Bulletin(){
+
+    }
+    public void addNotePerMatiere(){
+        
+    }
+    public void getMoyennePerMatiere(){
+        
+    }
+    public void getMoyenneGenerale(){
+        
+    }
+}
+
+
 
 // Main -------------------------------------------------
 public class POO_JAVA_Ecole {
