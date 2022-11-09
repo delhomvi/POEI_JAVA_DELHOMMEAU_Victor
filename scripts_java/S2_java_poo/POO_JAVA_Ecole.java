@@ -1,5 +1,6 @@
 package scripts_java.S2_java_poo;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /*
  * 
@@ -86,7 +87,8 @@ class Usagers{
 // Eleves -------------------------------------------------
 class Eleves extends Usagers{
     Double moyenne=0.0;
-
+    Bulletin bulletinNote = new Bulletin();
+    
     // getters et setters
     public Double getMoyenne() {
         return moyenne;
@@ -102,7 +104,10 @@ class Eleves extends Usagers{
         this.fonction="Eleves";
 
     }
-
+    
+    public Bulletin getBulletinNote() {
+        return bulletinNote;
+    }
     
 }
 
@@ -321,7 +326,7 @@ class Ecole{
 // Classe -------------------------------------------------
 class Classes{
     // Initialisation de l'école
-    ArrayList<Usagers> ElevesInClasse = new ArrayList<>()  ;
+    ArrayList<Eleves> ElevesInClasse = new ArrayList<>()  ;
     String nom ;
     String niveau;
     // Constructeur
@@ -330,10 +335,10 @@ class Classes{
         this.niveau=niveau;
     }
     // Getters Setters
-    public ArrayList<Usagers> getElevesInClasse() {
+    public ArrayList<Eleves> getElevesInClasse() {
         return ElevesInClasse;
     }
-    public void setElevesInClasse(ArrayList<Usagers> elevesInClasse) {
+    public void setElevesInClasse(ArrayList<Eleves> elevesInClasse) {
         ElevesInClasse = elevesInClasse;
     }
     public String getNom() {
@@ -363,7 +368,7 @@ class Classes{
     public void addElevesToClasse(ArrayList<Usagers> Personnels,String nom,String prenom){
         for(Usagers usa : Personnels){
             if (usa.getNom() == nom && usa.getPrenom()==prenom) {
-                ElevesInClasse.add(usa);
+                ElevesInClasse.add((Eleves)usa);
                 break;
             }
         }
@@ -375,22 +380,56 @@ class Classes{
         }
         System.out.println("-----------------\n\n");
     }
-
+    public Eleves findElevesByName(String nom,String prenom){
+        for(Eleves usa : ElevesInClasse){
+            if (usa.getNom() == nom && usa.getPrenom()==prenom) {
+                return usa;
+            }
+        }
+        return null;        
+    }
 }
 
 // Bulletin -------------------------------------------------
 class Bulletin{
-    public Bulletin(){
+    HashMap<String, Double> sommeNotes = new HashMap<String, Double>() {
+        {
+            put("Français", 0.0);
+            put("Mathématiques", 0.0);
+            put("Histoire", 0.0);
+            put("Anglais", 0.0);
+            put("Physique", 0.0);
+            put("Technologie", 0.0);
+            put("EPS", 0.0);
+        }
+    };
+    HashMap<String, Double> totalNotes = new HashMap<String, Double>() {
+        {
+            put("Français", 0.0);
+            put("Mathématiques", 0.0);
+            put("Histoire", 0.0);
+            put("Anglais", 0.0);
+            put("Physique", 0.0);
+            put("Technologie", 0.0);
+            put("EPS", 0.0);
+        }
+    };
 
+    public Bulletin(){
     }
-    public void addNotePerMatiere(){
-        
+
+    public void addNotePerMatiere(String Matière, Double note){
+        sommeNotes.put(Matière, sommeNotes.get(Matière) + note);
+        totalNotes.put(Matière, totalNotes.get(Matière) + 1);
     }
-    public void getMoyennePerMatiere(){
-        
+
+    public Double getMoyennePerMatiere(String Matière){
+        Double res = sommeNotes.get(Matière)/totalNotes.get(Matière);
+        return res;
     }
-    public void getMoyenneGenerale(){
-        
+
+    public void displayNotePerMatiere(String nom, String prenom,String Matière){
+        System.out.println(String.format("%s %s a une moyenne de %f en %s", nom,prenom,getMoyennePerMatiere(Matière),Matière));
     }
 }
 
@@ -433,6 +472,20 @@ public class POO_JAVA_Ecole {
         jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Durondal", "Tutu");
         jaures.findClasse("512").appelEleves();
         
+
+        // Ajouts de notes
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 10.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 5.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 7.5);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 15.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 15.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 14.5);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("EPS", 8.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("EPS", 14.0);
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","Français");
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","Technologie");
+        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","EPS");
+
     }
 
 
