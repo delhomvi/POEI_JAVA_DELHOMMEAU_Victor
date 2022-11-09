@@ -85,18 +85,9 @@ class Usagers{
 
 // Eleves -------------------------------------------------
 class Eleves extends Usagers{
-    String classe="indefinis";
     Double moyenne=0.0;
 
     // getters et setters
-    public String getClasse() {
-        return classe;
-    }
-
-    public void setClasse(String classe) {
-        this.classe = classe;
-    }
-
     public Double getMoyenne() {
         return moyenne;
     }
@@ -106,9 +97,8 @@ class Eleves extends Usagers{
     }
 
     // Constructeurs
-    public Eleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
+    public Eleves(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a,Hor);
-        this.classe=classe;
         this.fonction="Eleves";
 
     }
@@ -235,6 +225,7 @@ class Benevoles extends Salaries{
 class Ecole{
     // Initialisation de l'école
     ArrayList<Usagers> Personnels = new ArrayList<>()  ;
+    ArrayList<Classes> Classes = new ArrayList<>()  ;
     String nom;
     String adresse;
     String Contact;
@@ -273,9 +264,6 @@ class Ecole{
     }
     
     // Autres fonctions
-    public void addEleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
-        Personnels.add(new Eleves(n,pn,adr,c,a ,classe,Hor));
-    }
     public void addSecretaire(String n,String pn,String adr,String c,Integer a, String Hor){
         Personnels.add(new Secretaires(n,pn,adr,c,a ,Hor));
     }
@@ -294,17 +282,21 @@ class Ecole{
     public void addBenevoles(String n,String pn,String adr,String c,Integer a, String wd, String Hor){
         Personnels.add(new Benevoles(n,pn,adr,c,a,wd,Hor));
     }
+    public void addEleves(String n,String pn,String adr,String c,Integer a , String Hor){
+        Personnels.add(new Eleves(n,pn,adr,c,a,Hor));
+    }
+    public void addClasse(String n,String lvl){
+        Classes.add(new Classes(n,lvl));
+    }
 
-    // Faire l'appel
-    public void faireAppel(){
+    // Faire l'appel du personnel
+    public void appelDeLecole(){
         System.out.println("-----------------\nAppel du personnel de l'école:\n\n");
         for(Usagers e:Personnels){
             System.out.println(String.format("%s %s, Présent? Oui présent!", e.getPrenom(),e.getNom()));
         }
         System.out.println("-----------------\n\n");
-        
     }
-    
     public void appelByName(String nom,String prenom){
         System.out.println(String.format("-----------------\nAppel de %s %s:\n", nom,prenom));
         for(Usagers usa : Personnels){
@@ -314,23 +306,44 @@ class Ecole{
             }
         }
         System.out.println("-----------------\n");
+    }
+}
+
+// Classe
+class Classes{
+    // Initialisation de l'école
+    ArrayList<Usagers> ElevesInClasse = new ArrayList<>()  ;
+    String nom ;
+    String niveau;
+    // Constructeur
+    public Classes(String nom, String niveau){
+        this.nom=nom;
+        this.niveau=niveau;
+    }
+    // Autres fonctions
+    public void appelByName(String nom,String prenom){
+        System.out.println(String.format("-----------------\nAppel de %s %s:\n", nom,prenom));
+        for(Usagers usa : ElevesInClasse){
+            if (usa.getNom() == nom && usa.getPrenom()==prenom) {
+                System.out.println(String.format("%s %s est present",nom,prenom));
+                break;
+            }
+        }
+        System.out.println("-----------------\n");
+        
+    }
+    public void addElevesToClasse(String nom,String prenom){
         
     }
 
 }
-
 
 // Main -------------------------------------------------
 public class POO_JAVA_Ecole {
     public static void main(String[] args){
         // Initialise école
         Ecole jaures = new Ecole("Jaures","Genre pas loin de la gare","mél: ecole.scolaire@trou.fr");
-        // Remplissage de Personnels
-        jaures.addEleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
-        jaures.addEleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
-        jaures.addEleves("Dutranoix", "Tete", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
-        jaures.addEleves("Dutronc", "Titi", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
-        jaures.addEleves("Durondal", "Tutu", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
+        // Remplissage du Personnel et ded élèves
         jaures.addEnseignants("Rondeau", "Stephane", "Un peu loins de l'école", "Telephone de sa maison", 55,"8h-17h");
         jaures.addEnseignants("Rondu", "Irma", "Un peu loins de l'école", "Telephone de sa maison", 57,"8h-17h");
         jaures.addSurveillants("Sadhi", "Salim", "Un peu loins de l'école", "Telephone de sa maison", 58,"8h-17h");
@@ -338,10 +351,22 @@ public class POO_JAVA_Ecole {
         jaures.addBibliothequaire("Biblots", "Eleonore", "Un peu loins de l'école", "Telephone de sa maison", 54,"8h-17h");
         jaures.addCuisinier("Cuiseur", "Eric", "Un peu loins de l'école", "Telephone de sa maison", 40,"8h-17h");
         jaures.addBenevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique","8h-17h");
-        
-        jaures.faireAppel();
+        jaures.addEleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
+        jaures.addEleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
+        jaures.addEleves("Dutranoix", "Tete", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
+        jaures.addEleves("Dutronc", "Titi", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
+        jaures.addEleves("Durondal", "Tutu", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
+
+        // Appel du personnel !
+        jaures.appelDeLecole();
         jaures.appelByName("Durand", "Toto");
         jaures.appelByName("Durond", "Cercle");
+
+        // Ajouts des eleves à la classe
+        jaures.addClasse("512", "5eme");
+
+        
+        
     }
 
 
