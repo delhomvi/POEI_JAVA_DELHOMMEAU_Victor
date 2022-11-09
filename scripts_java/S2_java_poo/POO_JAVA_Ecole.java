@@ -9,80 +9,6 @@ import java.util.ArrayList;
  * 
 */
 
-// Ecole -------------------------------------------------
-class Ecole{
-    // Initialisation de l'école
-    ArrayList<Usagers> Personnels = new ArrayList<>()  ;
-    String nom;
-    String adresse;
-    String Contact;
-    
-    // Constructeur
-    public Ecole(String n,String a,String c){
-        this.nom=n;
-        this.adresse=a;
-        this.Contact=c;
-    }
-
-    // Getetrs et setters
-    public ArrayList<Usagers> getPersonnels() {
-        return Personnels;
-    }
-    public void setPersonnels(ArrayList<Usagers> personnels) {
-        Personnels = personnels;
-    }
-    public String getNom() {
-        return nom;
-    }
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-    public String getAdresse() {
-        return adresse;
-    }
-    public void setAdresse(String adresse) {
-        this.adresse = adresse;
-    }
-    public String getContact() {
-        return Contact;
-    }
-    public void setContact(String contact) {
-        Contact = contact;
-    }
-    
-    // Autres fonctions
-    public void addEleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
-        Personnels.add(new Eleves(n,pn,adr,c,a ,classe,Hor));
-    }
-    public void addSecretaire(String n,String pn,String adr,String c,Integer a, String Hor){
-        Personnels.add(new Secretaires(n,pn,adr,c,a ,Hor));
-    }
-    public void addCuisinier(String n,String pn,String adr,String c,Integer a, String Hor){
-        Personnels.add(new Cuisinier(n,pn,adr,c,a,Hor));
-    }
-    public void addEnseignants(String n,String pn,String adr,String c,Integer a , String Hor){
-        Personnels.add(new Enseignants(n,pn,adr,c,a,Hor));
-    }
-    public void addSurveillants(String n,String pn,String adr,String c,Integer a, String Hor){
-        Personnels.add(new Surveillants(n,pn,adr,c,a ,Hor));
-    }
-    public void addBibliothequaire(String n,String pn,String adr,String c,Integer a, String Hor){
-        Personnels.add(new Bibliothequaire(n,pn,adr,c,a ,Hor));
-    }
-    public void addBenevoles(String n,String pn,String adr,String c,Integer a, String wd, String Hor){
-        Personnels.add(new Benevoles(n,pn,adr,c,a,wd,Hor));
-    }
-
-    // Faire l'appel
-    public void faireAppel(){
-        System.out.println("-----------------\nAppel du personnel de l'école:\n\n");
-        for(Usagers e:Personnels){
-            System.out.println(String.format("%s %s, Présent? Oui présent!", e.getPrenom(),e.getNom()));
-        }
-    }
-    
-
-}
 
 // Usagers -------------------------------------------------
 class Usagers{
@@ -305,6 +231,94 @@ class Benevoles extends Salaries{
 }
 
 
+// Ecole -------------------------------------------------
+class Ecole{
+    // Initialisation de l'école
+    ArrayList<Usagers> Personnels = new ArrayList<>()  ;
+    String nom;
+    String adresse;
+    String Contact;
+    
+    // Constructeur
+    public Ecole(String n,String a,String c){
+        this.nom=n;
+        this.adresse=a;
+        this.Contact=c;
+    }
+
+    // Getetrs et setters
+    public ArrayList<Usagers> getPersonnels() {
+        return Personnels;
+    }
+    public void setPersonnels(ArrayList<Usagers> personnels) {
+        Personnels = personnels;
+    }
+    public String getNom() {
+        return nom;
+    }
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+    public String getAdresse() {
+        return adresse;
+    }
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+    public String getContact() {
+        return Contact;
+    }
+    public void setContact(String contact) {
+        Contact = contact;
+    }
+    
+    // Autres fonctions
+    public void addEleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
+        Personnels.add(new Eleves(n,pn,adr,c,a ,classe,Hor));
+    }
+    public void addSecretaire(String n,String pn,String adr,String c,Integer a, String Hor){
+        Personnels.add(new Secretaires(n,pn,adr,c,a ,Hor));
+    }
+    public void addCuisinier(String n,String pn,String adr,String c,Integer a, String Hor){
+        Personnels.add(new Cuisinier(n,pn,adr,c,a,Hor));
+    }
+    public void addEnseignants(String n,String pn,String adr,String c,Integer a , String Hor){
+        Personnels.add(new Enseignants(n,pn,adr,c,a,Hor));
+    }
+    public void addSurveillants(String n,String pn,String adr,String c,Integer a, String Hor){
+        Personnels.add(new Surveillants(n,pn,adr,c,a ,Hor));
+    }
+    public void addBibliothequaire(String n,String pn,String adr,String c,Integer a, String Hor){
+        Personnels.add(new Bibliothequaire(n,pn,adr,c,a ,Hor));
+    }
+    public void addBenevoles(String n,String pn,String adr,String c,Integer a, String wd, String Hor){
+        Personnels.add(new Benevoles(n,pn,adr,c,a,wd,Hor));
+    }
+
+    // Faire l'appel
+    public void faireAppel(){
+        System.out.println("-----------------\nAppel du personnel de l'école:\n\n");
+        for(Usagers e:Personnels){
+            System.out.println(String.format("%s %s, Présent? Oui présent!", e.getPrenom(),e.getNom()));
+        }
+        System.out.println("-----------------\n\n");
+        
+    }
+    
+    public void appelByName(String nom,String prenom){
+        System.out.println(String.format("-----------------\nAppel de %s %s:\n", nom,prenom));
+        for(Usagers usa : Personnels){
+            if (usa.getNom() == nom && usa.getPrenom()==prenom) {
+                System.out.println(String.format("%s %s est present",nom,prenom));
+                break;
+            }
+        }
+        System.out.println("-----------------\n");
+        
+    }
+
+}
+
 
 // Main -------------------------------------------------
 public class POO_JAVA_Ecole {
@@ -326,7 +340,8 @@ public class POO_JAVA_Ecole {
         jaures.addBenevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique","8h-17h");
         
         jaures.faireAppel();
-
+        jaures.appelByName("Durand", "Toto");
+        jaures.appelByName("Durond", "Cercle");
     }
 
 
