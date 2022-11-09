@@ -1,5 +1,4 @@
 package scripts_java.S2_java_poo;
-
 import java.util.ArrayList;
 
 /*
@@ -19,6 +18,7 @@ class Usagers{
     String adresse="indefini";
     String contact="indefinis";
     String fonction = "indefinis";
+    String Horraires = "indefinis";
 
     // Getters et setters
     public String getNom() {
@@ -63,19 +63,37 @@ class Usagers{
         this.fonction = fonction;
     }
 
+    public String getHorraires() {
+        return Horraires;
+    }
+    public void setHorraires(String horraires) {
+        Horraires = horraires;
+    }
+
     // Constructeur
-    public Usagers(String n,String pn,String adr,String c,Integer a ){
+    public Usagers(String n,String pn,String adr,String c,Integer a, String Hor){
         this.nom=n;
         this.prenom=pn;
         this.age=a;
         this.adresse=adr;
         this.contact=c;
+        this.Horraires=Hor;
     }
     
 
 }
 
 // Eleves -------------------------------------------------
+class Bulletin{
+    public Bulletin(){
+
+    }
+
+    public void addNotes(String Mat, Double note){
+        
+    }
+}
+
 class Eleves extends Usagers{
     String classe="indefinis";
     Double moyenne=0.0;
@@ -98,8 +116,8 @@ class Eleves extends Usagers{
     }
 
     // Constructeurs
-    public Eleves(String n,String pn,String adr,String c,Integer a ,String classe){
-        super(n, pn, adr, c, a);
+    public Eleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.classe=classe;
         this.fonction="Eleves";
 
@@ -107,7 +125,6 @@ class Eleves extends Usagers{
 
     
 }
-
 
 // Salariés -------------------------------------------------
 class Salaries extends Usagers{
@@ -129,8 +146,8 @@ class Salaries extends Usagers{
     }
     
     // Constructeur
-    public Salaries(String n,String pn,String adr,String c,Integer a){
-        super(n, pn, adr, c, a);
+    public Salaries(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a, Hor);
     }
     
     // Autres fonctions
@@ -141,8 +158,8 @@ class Salaries extends Usagers{
 
 class Enseignants extends Salaries{
     // Constructeur
-    public Enseignants(String n,String pn,String adr,String c,Integer a ){
-        super(n, pn, adr, c, a);
+    public Enseignants(String n,String pn,String adr,String c,Integer a,String Hor ){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Enseignant";
         this.whatDoing="Enseigner les bases aux eleves";
         this.Salaire=2000.0;
@@ -153,8 +170,8 @@ class Enseignants extends Salaries{
 
 class Surveillants extends Salaries{
     // Constructeur
-    public Surveillants(String n,String pn,String adr,String c,Integer a ){
-        super(n, pn, adr, c, a);
+    public Surveillants(String n,String pn,String adr,String c,Integer a,String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Surveillants";
         this.whatDoing="Surveiller les eleves";
         this.Salaire=1400.0;
@@ -163,8 +180,8 @@ class Surveillants extends Salaries{
 
 class Secretaires extends Salaries{
     // Constructeur
-    public Secretaires(String n,String pn,String adr,String c,Integer a ){
-        super(n, pn, adr, c, a);
+    public Secretaires(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Secretaires";
         this.whatDoing="Effectuer des taches administratives";
         this.Salaire=1400.0;
@@ -173,8 +190,8 @@ class Secretaires extends Salaries{
 
 class Bibliothequaire extends Salaries{
     // Constructeur
-    public Bibliothequaire(String n,String pn,String adr,String c,Integer a ){
-        super(n, pn, adr, c, a);
+    public Bibliothequaire(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Bibliothequaire";
         this.whatDoing="Gerer la bibliothèque";
         this.Salaire=1400.0;
@@ -183,18 +200,19 @@ class Bibliothequaire extends Salaries{
 
 class Cuisinier extends Salaries{
     // Constructeur
-    public Cuisinier(String n,String pn,String adr,String c,Integer a ){
-        super(n, pn, adr, c, a);
+    public Cuisinier(String n,String pn,String adr,String c,Integer a,String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Cuisinier";
         this.whatDoing="Preparer les repas";
         this.Salaire=1400.0;
     }
 }
 
+
 // Benevoles -------------------------------------------------
 class Benevoles extends Salaries{
-    Benevoles(String n,String pn,String adr,String c,Integer a,String wd){
-        super(n, pn, adr, c, a);
+    Benevoles(String n,String pn,String adr,String c,Integer a,String wd,String Hor){
+        super(n, pn, adr, c, a,Hor);
         this.fonction="Benevole";
         this.whatDoing=wd;
     }
@@ -208,18 +226,18 @@ public class POO_JAVA_Ecole {
     static ArrayList<Usagers> Personnels = new ArrayList<>()  ;
     public static void main(String[] args){
         // Remplissage de Personnels
-        Personnels.add(new Eleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10, "CP"));
-        Personnels.add(new Eleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10, "CP"));
-        Personnels.add(new Eleves("Dutranoix", "Tete", "Pas loins de l'école", "Tel de ses parents", 10, "CP"));
-        Personnels.add(new Eleves("Dutronc", "Titi", "Pas loins de l'école", "Tel de ses parents", 10, "CP"));
-        Personnels.add(new Eleves("Durondal", "Tutu", "Pas loins de l'école", "Tel de ses parents", 10, "CP"));
-        Personnels.add(new Enseignants("Rondeau", "Stephane", "Un peu loins de l'école", "Telephone de sa maison", 55));
-        Personnels.add(new Enseignants("Rondu", "Irma", "Un peu loins de l'école", "Telephone de sa maison", 57));
-        Personnels.add(new Surveillants("Sadhi", "Salim", "Un peu loins de l'école", "Telephone de sa maison", 58));
-        Personnels.add(new Secretaires("Secrets", "Victoria", "Un peu loins de l'école", "Telephone de sa maison", 59));
-        Personnels.add(new Bibliothequaire("Biblots", "Eleonore", "Un peu loins de l'école", "Telephone de sa maison", 54));
-        Personnels.add(new Cuisinier("Cuiseur", "Eric", "Un peu loins de l'école", "Telephone de sa maison", 40));
-        Personnels.add(new Benevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique"));
+        Personnels.add(new Eleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h"));
+        Personnels.add(new Eleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h"));
+        Personnels.add(new Eleves("Dutranoix", "Tete", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h"));
+        Personnels.add(new Eleves("Dutronc", "Titi", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h"));
+        Personnels.add(new Eleves("Durondal", "Tutu", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h"));
+        Personnels.add(new Enseignants("Rondeau", "Stephane", "Un peu loins de l'école", "Telephone de sa maison", 55,"8h-17h"));
+        Personnels.add(new Enseignants("Rondu", "Irma", "Un peu loins de l'école", "Telephone de sa maison", 57,"8h-17h"));
+        Personnels.add(new Surveillants("Sadhi", "Salim", "Un peu loins de l'école", "Telephone de sa maison", 58,"8h-17h"));
+        Personnels.add(new Secretaires("Secrets", "Victoria", "Un peu loins de l'école", "Telephone de sa maison", 59,"8h-17h"));
+        Personnels.add(new Bibliothequaire("Biblots", "Eleonore", "Un peu loins de l'école", "Telephone de sa maison", 54,"8h-17h"));
+        Personnels.add(new Cuisinier("Cuiseur", "Eric", "Un peu loins de l'école", "Telephone de sa maison", 40,"8h-17h"));
+        Personnels.add(new Benevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique","8h-17h"));
         
         // Affichage des resultats
         System.out.println("------------------");
