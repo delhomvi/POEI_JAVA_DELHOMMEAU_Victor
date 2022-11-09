@@ -13,9 +13,14 @@ import java.util.ArrayList;
 class Ecole{
     ArrayList<Usagers> Personnels = new ArrayList<>()  ;
     String nom;
+    String adresse;
+    String Contact;
+    
     // Constructeur
-    public Ecole(String nom){
-        this.nom=nom;
+    public Ecole(String n,String a,String c){
+        this.nom=n;
+        this.adresse=a;
+        this.Contact=c;
     }
 
     // Getetrs et setters
@@ -34,7 +39,21 @@ class Ecole{
     public void setNom(String nom) {
         this.nom = nom;
     }
+    public String getAdresse() {
+        return adresse;
+    }
 
+    public void setAdresse(String adresse) {
+        this.adresse = adresse;
+    }
+
+    public String getContact() {
+        return Contact;
+    }
+
+    public void setContact(String contact) {
+        Contact = contact;
+    }
     // Autres fonctions
     public void addEleves(String n,String pn,String adr,String c,Integer a ,String classe, String Hor){
         Personnels.add(new Eleves(n,pn,adr,c,a ,classe,Hor));
@@ -295,7 +314,7 @@ class Benevoles extends Salaries{
 public class POO_JAVA_Ecole {
     public static void main(String[] args){
         // Initialise école
-        Ecole jaures = new Ecole("Jaures");
+        Ecole jaures = new Ecole("Jaures","Genre pas loin de la gare","mél: ecole.scolaire@trou.fr");
         // Remplissage de Personnels
         jaures.addEleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
         jaures.addEleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10, "CP","8h-17h");
