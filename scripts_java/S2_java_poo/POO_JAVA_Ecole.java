@@ -130,6 +130,7 @@ class Eleves extends Usagers{
 class Salaries extends Usagers{
     String whatDoing = "indefinis";
     Double Salaire =0.0;
+    String statut ="indefinis";
     
     // Getter et setter
     public String getWhatDoing() {
@@ -156,7 +157,27 @@ class Salaries extends Usagers{
     }
 }
 
-class Enseignants extends Salaries{
+class Administratif extends Salaries{
+    public Administratif(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a, Hor);
+        this.statut="Administratif";
+    }
+}
+
+class Contractuel extends Salaries{
+    public Contractuel(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a, Hor);
+        this.statut="Contractuel";
+}
+}
+class Enseignant_stat extends Salaries{
+    public Enseignant_stat(String n,String pn,String adr,String c,Integer a, String Hor){
+        super(n, pn, adr, c, a, Hor);
+        this.statut="Contractuel";
+}
+}
+
+class Enseignants extends Enseignant_stat{
     // Constructeur
     public Enseignants(String n,String pn,String adr,String c,Integer a,String Hor ){
         super(n, pn, adr, c, a,Hor);
@@ -168,7 +189,7 @@ class Enseignants extends Salaries{
     
 }
 
-class Surveillants extends Salaries{
+class Surveillants extends Contractuel{
     // Constructeur
     public Surveillants(String n,String pn,String adr,String c,Integer a,String Hor){
         super(n, pn, adr, c, a,Hor);
@@ -178,7 +199,7 @@ class Surveillants extends Salaries{
     }
 }
 
-class Secretaires extends Salaries{
+class Secretaires extends Administratif{
     // Constructeur
     public Secretaires(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a,Hor);
@@ -188,7 +209,7 @@ class Secretaires extends Salaries{
     }
 }
 
-class Bibliothequaire extends Salaries{
+class Bibliothequaire extends Enseignant_stat{
     // Constructeur
     public Bibliothequaire(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a,Hor);
@@ -198,7 +219,7 @@ class Bibliothequaire extends Salaries{
     }
 }
 
-class Cuisinier extends Salaries{
+class Cuisinier extends Contractuel{
     // Constructeur
     public Cuisinier(String n,String pn,String adr,String c,Integer a,String Hor){
         super(n, pn, adr, c, a,Hor);
