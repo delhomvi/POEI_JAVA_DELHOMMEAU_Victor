@@ -332,8 +332,13 @@ class Classes{
         System.out.println("-----------------\n");
         
     }
-    public void addElevesToClasse(String nom,String prenom){
-        
+    public void addElevesToClasse(ArrayList<Usagers> Personnels,String nom,String prenom){
+        for(Usagers usa : Personnels){
+            if (usa.getNom() == nom && usa.getPrenom()==prenom) {
+                ElevesInClasse.add(usa);
+                break;
+            }
+        }
     }
 
 }
@@ -364,7 +369,7 @@ public class POO_JAVA_Ecole {
 
         // Ajouts des eleves à la classe
         jaures.addClasse("512", "5eme");
-
+        
         
         
     }
