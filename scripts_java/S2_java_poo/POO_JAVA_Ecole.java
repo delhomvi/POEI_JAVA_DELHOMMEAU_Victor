@@ -216,7 +216,6 @@ class Benevoles extends Salaries{
         this.fonction="Benevole";
         this.whatDoing=wd;
     }
-
 }
 
 
