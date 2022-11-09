@@ -385,7 +385,7 @@ public class POO_JAVA_Ecole {
         // Initialise école
         Ecole jaures = new Ecole("Jaures","Genre pas loin de la gare","mél: ecole.scolaire@trou.fr");
         
-        // Remplissage du Personnel et ded élèves
+        // Remplissage du Personnel et des élèves
         jaures.addEnseignants("Rondeau", "Stephane", "Un peu loins de l'école", "Telephone de sa maison", 55,"8h-17h");
         jaures.addEnseignants("Rondu", "Irma", "Un peu loins de l'école", "Telephone de sa maison", 57,"8h-17h");
         jaures.addSurveillants("Sadhi", "Salim", "Un peu loins de l'école", "Telephone de sa maison", 58,"8h-17h");
@@ -393,6 +393,7 @@ public class POO_JAVA_Ecole {
         jaures.addBibliothequaire("Biblots", "Eleonore", "Un peu loins de l'école", "Telephone de sa maison", 54,"8h-17h");
         jaures.addCuisinier("Cuiseur", "Eric", "Un peu loins de l'école", "Telephone de sa maison", 40,"8h-17h");
         jaures.addBenevoles("Bassi", "Benassi", "Proche de l'école", "Telephone de sa maison", 25,"Il s'occupe de l'entretiens informatique","8h-17h");
+        
         jaures.addEleves("Durand", "Toto", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
         jaures.addEleves("Dutrou", "Tata", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
         jaures.addEleves("Dutranoix", "Tete", "Pas loins de l'école", "Tel de ses parents", 10,"8h-17h");
