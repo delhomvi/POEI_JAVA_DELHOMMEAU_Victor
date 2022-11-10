@@ -89,24 +89,20 @@ class Usagers{
 // Eleves
 class Eleves extends Usagers{
     Double moyenne=0.0;
-    Bulletin bulletinNote = new Bulletin();
-    
+    Bulletin bulletinNote = new Bulletin(); 
     // getters et setters
     public Double getMoyenne() {
         return moyenne;
     }
-
     public void setMoyenne(Double moyenne) {
         this.moyenne = moyenne;
     }
-
     // Constructeurs
     public Eleves(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a,Hor);
         this.fonction="Eleves";
 
     }
-    
     public Bulletin getBulletinNote() {
         return bulletinNote;
     }
@@ -167,9 +163,11 @@ class Enseignants extends Enseignant_stat{
         this.fonction="Enseignant";
         this.whatDoing="Enseigner les bases aux eleves";
         this.Salaire=2000.0;
-    }
+    }    
 
-    
+    public void makeDevoirs(ArrayList<Usagers> Eleves,String Enoncce){
+        Devoirs(String matiere,String enonce)
+    }
 }
 class Surveillants extends Contractuel{
     // Constructeur
@@ -423,27 +421,40 @@ class Bulletin{
 
     public Bulletin(){
     }
-
     public void addNotePerMatiere(String Matière, Double note){
         sommeNotes.put(Matière, sommeNotes.get(Matière) + note);
         totalNotes.put(Matière, totalNotes.get(Matière) + 1);
     }
-
     public Double getMoyennePerMatiere(String Matière){
         Double res = sommeNotes.get(Matière)/totalNotes.get(Matière);
         return res;
     }
-
     public void displayNotePerMatiere(String nom, String prenom,String Matière){
         System.out.println(String.format("%s %s a une moyenne de %f en %s", nom,prenom,getMoyennePerMatiere(Matière),Matière));
     }
 }
 // --------------------------------------------------------------------------------------------------
+// Devoirs
+// --------------------------------------------------------------------------------------------------
+class Devoirs{
+    String matiere = "indefinis";
+    String enonce ="indefeinis";
+    Double note =null;
+    
+    public Devoirs(String matiere,String enonce){
+        this.matiere=matiere;
+        this.enonce=enonce;
+    }
+    public void setNote(Double note){
+        this.note=note;
+    }
+}
+
+// --------------------------------------------------------------------------------------------------
 // Main
 // --------------------------------------------------------------------------------------------------
 public class POO_JAVA_Ecole {
     public static void main(String[] args){
-        
         // Initialise école
         Ecole jaures = new Ecole("Jaures","Genre pas loin de la gare","mél: ecole.scolaire@trou.fr");
         
