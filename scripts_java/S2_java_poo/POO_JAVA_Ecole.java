@@ -90,6 +90,7 @@ class Usagers{
 class Eleves extends Usagers{
     Double moyenne=0.0;
     Bulletin bulletinNote = new Bulletin(); 
+    ArrayList<Devoirs> listeDevoirs = new ArrayList<>();
     // getters et setters
     public Double getMoyenne() {
         return moyenne;
@@ -105,6 +106,14 @@ class Eleves extends Usagers{
     }
     public Bulletin getBulletinNote() {
         return bulletinNote;
+    }
+
+    public void addDevoirs(Devoirs d) {
+        listeDevoirs.add(d);
+    }
+
+    public ArrayList<Devoirs> getDevoirs() {
+        return listeDevoirs;
     }
     
 }
@@ -165,8 +174,21 @@ class Enseignants extends Enseignant_stat{
         this.Salaire=2000.0;
     }    
 
-    public void makeDevoirs(ArrayList<Usagers> Eleves,String Enoncce){
-        Devoirs(String matiere,String enonce)
+    public void makeDevoirs(ArrayList<Eleves> Elevess,String nomDevoir,String matiere,String enonce){
+        for(Eleves e: Elevess){
+            e.addDevoirs(new Devoirs(nomDevoir,matiere,enonce));
+        }
+    }
+
+    public void addNoteForDevoir(ArrayList<Eleves> Elevess,String nomDevoir, String nomEleve, String prenomEleve){
+        for(Eleves e: Elevess){
+            if(e.nom==nomEleve && e.prenom==prenomEleve){
+                ArrayList<Devoirs> devoirsEleve = e.getDevoirs();
+                for(Devoirs d : devoirsEleve){
+                    
+                }
+            }
+        }
     }
 }
 class Surveillants extends Contractuel{
@@ -311,6 +333,14 @@ class Ecole{
         }
         return resClasse;
     }
+    public Enseignants getStaffByname(String nom,String prenom){
+        for(Usagers usa : Personnels){
+            if (usa.getNom() == nom && usa.getPrenom()==prenom) {
+                return (Enseignants)usa;
+            }
+        }
+        return null;
+    }
     public void findMoyennePerElevesInClasse(String nomClasse,String nomEleve,String prenomEleve,String matiere){
         findClasse(nomClasse).findElevesByName(nomEleve, prenomEleve).getBulletinNote().displayNotePerMatiere(nomEleve,prenomEleve,matiere);
     }
@@ -322,6 +352,11 @@ class Ecole{
     }
     public void appelElevesPerClasse(String nomClasse){
         findClasse(nomClasse).appelEleves();
+    }
+    public void addDevoirsByProfNamePerClass(String nomProf,String prenomProf,String className,String matiere,String nomDevoir,String enonce){
+        Enseignants prof = getStaffByname(nomProf,prenomProf);
+        ArrayList<Eleves> listeEleves = findClasse(className).getListEleves();
+        prof.makeDevoirs(listeEleves,nomDevoir, matiere, enonce);
     }
     
 }
@@ -390,6 +425,9 @@ class Classes{
         }
         return null;        
     }
+    public ArrayList<Eleves> getListEleves(){
+        return ElevesInClasse;
+    }
 }
 
 // --------------------------------------------------------------------------------------------------
@@ -439,11 +477,13 @@ class Bulletin{
 class Devoirs{
     String matiere = "indefinis";
     String enonce ="indefeinis";
+    String nomDevoir ="indefinis";
     Double note =null;
     
-    public Devoirs(String matiere,String enonce){
+    public Devoirs(String nomDevoir,String matiere,String enonce){
         this.matiere=matiere;
         this.enonce=enonce;
+        this.nomDevoir=nomDevoir;
     }
     public void setNote(Double note){
         this.note=note;
