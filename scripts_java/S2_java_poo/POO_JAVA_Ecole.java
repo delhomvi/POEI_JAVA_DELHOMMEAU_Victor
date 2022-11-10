@@ -268,7 +268,7 @@ class Ecole{
         Contact = contact;
     }
     
-    // Autres fonctions
+    // Ajouts de personnes à l'école
     public void addSecretaire(String n,String pn,String adr,String c,Integer a, String Hor){
         Personnels.add(new Secretaires(n,pn,adr,c,a ,Hor));
     }
@@ -294,7 +294,7 @@ class Ecole{
         ClassesList.add(new Classes(n,lvl));
     }
 
-    // Faire l'appel du personnel
+    // Autres fonctions
     public void appelDeLecole(){
         System.out.println("-----------------\nAppel du personnel de l'école:\n\n");
         for(Usagers e:Personnels){
@@ -321,6 +321,19 @@ class Ecole{
         }
         return resClasse;
     }
+    public void findMoyennePerElevesInClasse(String nomClasse,String nomEleve,String prenomEleve,String matiere){
+        findClasse(nomClasse).findElevesByName(nomEleve, prenomEleve).getBulletinNote().displayNotePerMatiere(nomEleve,prenomEleve,matiere);
+    }
+    public void addNotePerElevesPerMatiere(String nomClasse,String nomEleve,String prenomEleve,String matiere,Double note){
+        findClasse(nomClasse).findElevesByName(nomEleve,prenomEleve).getBulletinNote().addNotePerMatiere(matiere, note);
+    }
+    public void addEleveInSpecificClass(String nomClasse,String nomEleve,String prenomEleve){
+        findClasse(nomClasse).addElevesToClasse(Personnels, nomEleve,prenomEleve);
+    }
+    public void appelElevesPerClasse(String nomClasse){
+        findClasse(nomClasse).appelEleves();
+    }
+    
 }
 
 // Classe -------------------------------------------------
@@ -465,27 +478,28 @@ public class POO_JAVA_Ecole {
         // Ajouts des eleves à la classe
         System.out.println("---------------");
         jaures.addClasse("512", "5eme");
-        jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Durand", "Toto");
-        jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Dutrou", "Tata");
-        jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Dutranoix", "Tete");
-        jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Dutronc", "Titi");
-        jaures.findClasse("512").addElevesToClasse(jaures.Personnels, "Durondal", "Tutu");
-        jaures.findClasse("512").appelEleves();
+        jaures.addEleveInSpecificClass("512","Durand", "Toto");
+        jaures.addEleveInSpecificClass("512", "Dutrou", "Tata");
+        jaures.addEleveInSpecificClass("512", "Dutranoix", "Tete");
+        jaures.addEleveInSpecificClass("512", "Dutronc", "Titi");
+        jaures.addEleveInSpecificClass("512", "Durondal", "Tutu");
+        jaures.appelElevesPerClasse("512");;
         
 
         // Ajouts de notes
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 10.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 5.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Français", 7.5);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 15.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 15.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("Technologie", 14.5);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("EPS", 8.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().addNotePerMatiere("EPS", 14.0);
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","Français");
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","Technologie");
-        jaures.findClasse("512").findElevesByName("Durand", "Toto").getBulletinNote().displayNotePerMatiere("Durand","Toto","EPS");
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 10.0);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 5.0);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 7.5);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 14.5);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 8.0);
+        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 14.0);
 
+        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Français");
+        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Technologie");
+        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","EPS");
+        
     }
 
 }
