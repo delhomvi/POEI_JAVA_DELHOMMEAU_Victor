@@ -107,15 +107,17 @@ class Eleves extends Usagers{
     public Bulletin getBulletinNote() {
         return bulletinNote;
     }
-
     public void addDevoirs(Devoirs d) {
         listeDevoirs.add(d);
     }
-
     public ArrayList<Devoirs> getDevoirs() {
         return listeDevoirs;
     }
-    
+    public void showDevoirs(){
+        for(Devoirs d:listeDevoirs){
+            System.out.println(String.format("%s %s a eu pour le devoir %s une note de %f", this.nom,this.prenom,d.nomDevoir,d.note));
+        }
+    }
 }
 // Salariés
 class Salaries extends Usagers{
@@ -173,21 +175,24 @@ class Enseignants extends Enseignant_stat{
         this.whatDoing="Enseigner les bases aux eleves";
         this.Salaire=2000.0;
     }    
-
     public void makeDevoirs(ArrayList<Eleves> Elevess,String nomDevoir,String matiere,String enonce){
         for(Eleves e: Elevess){
             e.addDevoirs(new Devoirs(nomDevoir,matiere,enonce));
         }
     }
-
-    public void addNoteForDevoir(ArrayList<Eleves> Elevess,String nomDevoir, String nomEleve, String prenomEleve){
+    public void addNoteForDevoir(ArrayList<Eleves> Elevess,String nomDevoir,Double note ,String nomEleve, String prenomEleve){
         for(Eleves e: Elevess){
             if(e.nom==nomEleve && e.prenom==prenomEleve){
                 ArrayList<Devoirs> devoirsEleve = e.getDevoirs();
                 for(Devoirs d : devoirsEleve){
-                    
-                }
+                    if(d.nomDevoir==nomDevoir){
+                        d.setNote(note);
+                        break;
+                    }
+                };
+                break;
             }
+            
         }
     }
 }
@@ -358,7 +363,12 @@ class Ecole{
         ArrayList<Eleves> listeEleves = findClasse(className).getListEleves();
         prof.makeDevoirs(listeEleves,nomDevoir, matiere, enonce);
     }
-    
+    public ArrayList<Eleves> getElevesFromClass(String className){
+        return findClasse(className).ElevesInClasse;
+    }    
+    public void addNotePerProfNameByStudent(ArrayList<Eleves> eleves, String nomProf,String prenomProf,String nomDevoir,Double note ,String nomEleve, String prenomEleve){
+        getStaffByname(nomProf, prenomProf).addNoteForDevoir(eleves, nomDevoir, note , nomEleve, prenomEleve);
+    }
 }
 // Classe
 class Classes{
@@ -530,19 +540,30 @@ public class POO_JAVA_Ecole {
         
 
         // Ajouts de notes
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 10.0);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 5.0);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 7.5);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 14.5);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 8.0);
-        jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 14.0);
-
-        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Français");
-        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Technologie");
-        jaures.findMoyennePerElevesInClasse("512","Durand","Toto","EPS");
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 10.0);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 5.0);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Français", 7.5);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 15.0);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","Technologie", 14.5);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 8.0);
+        // jaures.addNotePerElevesPerMatiere("512","Durand", "Toto","EPS", 14.0);
+        // jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Français");
+        // jaures.findMoyennePerElevesInClasse("512","Durand","Toto","Technologie");
+        // jaures.findMoyennePerElevesInClasse("512","Durand","Toto","EPS");
         
+        jaures.addDevoirsByProfNamePerClass("Rondeau", "Stephane", "512", "Français", "Dictée", "Ecouter le prof puis ecrire");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",15.0,"Durand","Toto");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",10.0,"Dutrou","Tata");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",17.0,"Dutranoix","Tete");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",19.0,"Dutronc","Titi");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",9.0,"Durondal","Tutu");
+        jaures.findClasse("512").findElevesByName("Durand","Toto").showDevoirs();
+        jaures.findClasse("512").findElevesByName("Dutrou","Tata").showDevoirs();
+        jaures.findClasse("512").findElevesByName("Dutranoix","Tete").showDevoirs();
+        jaures.findClasse("512").findElevesByName("Dutronc","Titi").showDevoirs();
+        jaures.findClasse("512").findElevesByName("Durondal","Tutu").showDevoirs();
+
     }
 
 }
