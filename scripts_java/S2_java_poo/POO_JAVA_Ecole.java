@@ -114,8 +114,9 @@ class Eleves extends Usagers{
         return listeDevoirs;
     }
     public void showDevoirs(){
+        System.out.println(String.format("\n------------------------\nDevoirs de %s %s\n------------------------\n\n%10s | %50s | %s\n------------------------",this.nom,this.prenom,"Devoir","Enoncé","Note" ));
         for(Devoirs d:listeDevoirs){
-            System.out.println(String.format("%s %s a eu pour le devoir %s une note de %f", this.nom,this.prenom,d.nomDevoir,d.note));
+            System.out.println(String.format("%10s | %50s | %2.2f",d.nomDevoir,d.enonce,d.note));
         }
     }
 }
@@ -558,6 +559,17 @@ public class POO_JAVA_Ecole {
         jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",17.0,"Dutranoix","Tete");
         jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",19.0,"Dutronc","Titi");
         jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondeau","Stephane","Dictée",9.0,"Durondal","Tutu");
+        
+        
+        jaures.addDevoirsByProfNamePerClass("Rondu", "Irma", "512", "Technologie", "ExamInfo", "Devoir basé sur le skill en info");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondu", "Irma","ExamInfo",8.0,"Durand","Toto");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondu", "Irma","ExamInfo",7.0,"Dutrou","Tata");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondu", "Irma","ExamInfo",10.0,"Dutranoix","Tete");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondu", "Irma","ExamInfo",14.0,"Dutronc","Titi");
+        jaures.addNotePerProfNameByStudent(jaures.getElevesFromClass("512"),"Rondu", "Irma","ExamInfo",9.0,"Durondal","Tutu");
+        
+        
+        
         jaures.findClasse("512").findElevesByName("Durand","Toto").showDevoirs();
         jaures.findClasse("512").findElevesByName("Dutrou","Tata").showDevoirs();
         jaures.findClasse("512").findElevesByName("Dutranoix","Tete").showDevoirs();
