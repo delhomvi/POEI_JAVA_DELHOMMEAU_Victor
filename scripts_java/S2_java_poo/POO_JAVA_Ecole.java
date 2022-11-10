@@ -11,7 +11,10 @@ import java.util.HashMap;
 */
 
 
-// Usagers -------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+// Objets liés aux personnels
+// --------------------------------------------------------------------------------------------------
+
 class Usagers{
     String nom="indefini";
     String prenom="indefini";
@@ -83,8 +86,7 @@ class Usagers{
     
 
 }
-
-// Eleves -------------------------------------------------
+// Eleves
 class Eleves extends Usagers{
     Double moyenne=0.0;
     Bulletin bulletinNote = new Bulletin();
@@ -110,8 +112,7 @@ class Eleves extends Usagers{
     }
     
 }
-
-// Salariés -------------------------------------------------
+// Salariés
 class Salaries extends Usagers{
     String whatDoing = "indefinis";
     Double Salaire =0.0;
@@ -141,28 +142,24 @@ class Salaries extends Usagers{
         System.out.println(String.format("La fonction %s est chargée de la tache suivante: %s",this.fonction,this.whatDoing));
     }
 }
-
 class Administratif extends Salaries{
     public Administratif(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a, Hor);
         this.statut="Administratif";
     }
 }
-
 class Contractuel extends Salaries{
     public Contractuel(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a, Hor);
         this.statut="Contractuel";
 }
 }
-
 class Enseignant_stat extends Salaries{
     public Enseignant_stat(String n,String pn,String adr,String c,Integer a, String Hor){
         super(n, pn, adr, c, a, Hor);
         this.statut="Contractuel";
 }
 }
-
 class Enseignants extends Enseignant_stat{
     // Constructeur
     public Enseignants(String n,String pn,String adr,String c,Integer a,String Hor ){
@@ -174,7 +171,6 @@ class Enseignants extends Enseignant_stat{
 
     
 }
-
 class Surveillants extends Contractuel{
     // Constructeur
     public Surveillants(String n,String pn,String adr,String c,Integer a,String Hor){
@@ -184,7 +180,6 @@ class Surveillants extends Contractuel{
         this.Salaire=1400.0;
     }
 }
-
 class Secretaires extends Administratif{
     // Constructeur
     public Secretaires(String n,String pn,String adr,String c,Integer a, String Hor){
@@ -194,7 +189,6 @@ class Secretaires extends Administratif{
         this.Salaire=1400.0;
     }
 }
-
 class Bibliothequaire extends Enseignant_stat{
     // Constructeur
     public Bibliothequaire(String n,String pn,String adr,String c,Integer a, String Hor){
@@ -204,7 +198,6 @@ class Bibliothequaire extends Enseignant_stat{
         this.Salaire=1400.0;
     }
 }
-
 class Cuisinier extends Contractuel{
     // Constructeur
     public Cuisinier(String n,String pn,String adr,String c,Integer a,String Hor){
@@ -214,9 +207,6 @@ class Cuisinier extends Contractuel{
         this.Salaire=1400.0;
     }
 }
-
-
-// Benevoles -------------------------------------------------
 class Benevoles extends Salaries{
     Benevoles(String n,String pn,String adr,String c,Integer a,String wd,String Hor){
         super(n, pn, adr, c, a,Hor);
@@ -225,8 +215,10 @@ class Benevoles extends Salaries{
     }
 }
 
-
-// Ecole -------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+// Objets liés à l'école
+// --------------------------------------------------------------------------------------------------
+// Ecole
 class Ecole{
     // Initialisation de l'école
     ArrayList<Usagers> Personnels = new ArrayList<>()  ;
@@ -335,8 +327,7 @@ class Ecole{
     }
     
 }
-
-// Classe -------------------------------------------------
+// Classe
 class Classes{
     // Initialisation de l'école
     ArrayList<Eleves> ElevesInClasse = new ArrayList<>()  ;
@@ -403,7 +394,9 @@ class Classes{
     }
 }
 
-// Bulletin -------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+// Objets liés au bulletins
+// --------------------------------------------------------------------------------------------------
 class Bulletin{
     HashMap<String, Double> sommeNotes = new HashMap<String, Double>() {
         {
@@ -445,10 +438,9 @@ class Bulletin{
         System.out.println(String.format("%s %s a une moyenne de %f en %s", nom,prenom,getMoyennePerMatiere(Matière),Matière));
     }
 }
-
-
-
-// Main -------------------------------------------------
+// --------------------------------------------------------------------------------------------------
+// Main
+// --------------------------------------------------------------------------------------------------
 public class POO_JAVA_Ecole {
     public static void main(String[] args){
         
