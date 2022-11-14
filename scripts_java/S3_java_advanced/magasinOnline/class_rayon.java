@@ -19,6 +19,7 @@ class class_rayon {
 
     public void addArticleDirect(class_articles article){
         articles_list.add(article);
+        System.out.println(articles_list);
     }
 
     
@@ -51,7 +52,7 @@ class class_rayon {
             String userInputMediaType= scan.nextLine();
             articles_list.add(new class_articles_media(userInputTitle,userInputPrice,userInputDetails,userInputMediaType));
         }else{
-            System.out.println("toto");
+            System.out.println("********** Erreur **********");
         }
     }
     

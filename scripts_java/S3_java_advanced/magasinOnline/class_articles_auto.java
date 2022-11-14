@@ -5,6 +5,7 @@ class class_articles_auto extends class_articles{
     public class_articles_auto(String nom,String prix,String details,String km){
         super(nom, prix, details);
         this.km=km;
+        System.out.println(String.format("%s %s %s %s",nom,details,prix,km));
     }
     @Override
     public String toString() {
