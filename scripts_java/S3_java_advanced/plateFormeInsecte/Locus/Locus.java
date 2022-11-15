@@ -1,5 +1,7 @@
-package scripts_java.S3_java_advanced.Insectes;
+package scripts_java.S3_java_advanced.plateFormeInsecte.Locus;
 import java.util.ArrayList;
+
+import scripts_java.S3_java_advanced.plateFormeInsecte.Insectes.Insectes;
 
 public class Locus {
     String locus;

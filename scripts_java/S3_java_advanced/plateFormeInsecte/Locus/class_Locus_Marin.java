@@ -1,6 +1,6 @@
-package scripts_java.S3_java_advanced.Insectes;
+package scripts_java.S3_java_advanced.plateFormeInsecte.Locus;
 
-class class_Locus_Marin extends Locus{
+public class class_Locus_Marin extends Locus{
     public class_Locus_Marin(String zone){
         super(zone);
         this.locus="Marin";

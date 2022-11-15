@@ -1,4 +1,7 @@
-package scripts_java.S3_java_advanced.Insectes;
+package scripts_java.S3_java_advanced.plateFormeInsecte;
+import scripts_java.S3_java_advanced.plateFormeInsecte.Insectes.*;
+import scripts_java.S3_java_advanced.plateFormeInsecte.Locus.*;
+
 
 public class plateForme {
     public static void main(String[] args){
