@@ -2,7 +2,7 @@ package scripts_java;
 import java.sql.*;  
 
 public class sqlCommand {
-    public static void main(String[] args){
+    public sqlCommand(){
         try
         {  
             // Se connecte à mon sevreur, initialisation des variables
@@ -10,21 +10,17 @@ public class sqlCommand {
             readFromSQLservThreeColls(con,"SELECT * FROM animal");
             modSQLTable(con,"INSERT INTO animal(nom,id_espece) VALUES ('titi',1)");
             readFromSQLservTwoColls(con,"SELECT * FROM animal");
-            finalize(con);
+
         }
         catch(Exception e)
         { 
             System.out .println(e);
         }  
-    }
+    } 
 
-    public static Connection connectToMyServer() throws SQLException{ 
+    public Connection connectToMyServer() throws SQLException{ 
         Connection con=DriverManager.getConnection( "jdbc:mysql://localhost:3306/zoo","root","Salami72550!");  
         return con;
-    }
-
-    public static void finalize(Connection con) throws SQLException{
-        con.close();
     }
 
     public static void readFromSQLservTwoColls(Connection con,String query) throws SQLException{
@@ -46,6 +42,7 @@ public class sqlCommand {
         Statement stmt=con.createStatement(); 
         stmt.executeUpdate(query); 
     }
+    
 
     
 }
