@@ -1,7 +1,8 @@
 package scripts_java.S3_java_advanced.plateFormeInsecte.Locus;
 import java.util.ArrayList;
 
-import scripts_java.S3_java_advanced.plateFormeInsecte.Insectes.Insectes;
+import scripts_java.S3_java_advanced.plateFormeInsecte.Insectes.*;
+import scripts_java.S3_java_advanced.plateFormeInsecte.Mamiferes.*;
 
 public class Locus {
     String locus;
@@ -15,10 +16,10 @@ public class Locus {
         insectInLocus.add(i);
     }
 
-    public void whatInsect(){
-        System.out.println(String.format("Dans la zone %s (Locus %s), il y a les insectes:\n",zone ,locus));
+    public void whatSpec(){
+        System.out.println(String.format("Dans la zone %s (Locus %s), il y a les espèces:\n",zone ,locus));
         for(Insectes i : insectInLocus){
-            i.showInsect();
+            i.showSpec();
         }
     }
 }

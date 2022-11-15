@@ -9,7 +9,7 @@ public class Insectes {
         this.nomInsecte=nomInsecte;
     }
 
-    public void showInsect(){
+    public void showSpec(){
         System.out.println(String.format("Insecte: %s\nNom Insecte:%s\n\n", especeIsecte, nomInsecte));
     }
 
