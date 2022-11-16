@@ -1,4 +1,5 @@
-import javax.naming.ldap.ExtendedRequest;
+package scripts_java.S3_java_advanced.testsUnitaires;
+
 
 // Bourget
 
@@ -76,14 +77,13 @@ class Atester
         }
     }
 
-    static public Double tarif(int age) {
-        return 0.0;
+    static public Double tarif(int a) {
+        return a < 12 ? 4.0 : a < 60 ? 5.5 : 4.5;
     }
 
     static public boolean isBisextile(int annee) {
         return ((annee % 4 == 0) && (annee % 100 != 0)) || (annee % 400 == 0);
     }
-
 } 
 
 
@@ -122,7 +122,7 @@ public class LesTestOne {
          * sup ega  à 60 a -> 4.5€
          */
 
-        Atester.testDoubleEq( Atester.tarif( 41 ) ) , 5.5 );
+        Atester.testDoubleEq( Atester.tarif( 41 ) , 5.5 );
 
 
 
