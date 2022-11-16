@@ -1,7 +1,6 @@
 package scripts_java;
 
-import java.util.*;
-import java.util.ArrayList.*;
+
 import java.sql.*;  
 
 /* 

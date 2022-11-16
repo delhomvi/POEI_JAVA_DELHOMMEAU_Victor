@@ -144,7 +144,7 @@ class runFerme{
 }
 public class POO_JAVA_Ferme {
     public static void main(String[] args) {
-        runFerme rf =new runFerme();
+        //runFerme rf =new runFerme();
     }
 
 }

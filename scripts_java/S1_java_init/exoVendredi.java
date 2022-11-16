@@ -1,10 +1,8 @@
 package scripts_java.S1_java_init;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Random;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
 

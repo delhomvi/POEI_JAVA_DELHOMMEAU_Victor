@@ -1,5 +1,4 @@
 package scripts_java.S3_java_advanced.plateFormeInsecte.Insectes;
-import scripts_java.S3_java_advanced.plateFormeInsecte.Locus.Locus;
 
 public class Insectes {
     String especeIsecte;
