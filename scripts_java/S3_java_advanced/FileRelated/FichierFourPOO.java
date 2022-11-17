@@ -71,7 +71,7 @@ public class  FichierFourPOO {
     public static void main(String[] args) throws Exception
     {          
 
-        String file = "C:\\Users\\IB\\Desktop\\JavaNotebook\\scripts_java\\S3_java_advanced\\FileRelated\\FichierOne.java";
+        String file = "C:\\Users\\IB\\Desktop\\JavaNotebook\\scripts_java\\S3_java_advanced\\FileRelated\\Figures.java";
         MyFileReader filereader = new MyFileReader(file);
         try {
                
@@ -80,11 +80,13 @@ public class  FichierFourPOO {
                 while ( true )
                 {
                     ligne = filereader.readLine();
+                    int count = ligne.length() - ligne.replace("*", "").length();
                     System.out.println( String.format("%4d : %s", nbrLin++, ligne ) );
-                    String[] splitLigne = ligne.split(" ");
+                    String[] splitLigne = ligne.split("[\n.\t. ]+");
                     for(String elem : splitLigne){
-                        System.out.println(elem);
+                        System.out.println(">  "+elem+"  <");
                     }
+                    System.out.println("nombre de * dans le string :" + count);
                 }
 
                 
