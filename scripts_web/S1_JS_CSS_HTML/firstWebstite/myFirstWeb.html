@@ -1,0 +1,162 @@
+<!-- 
+    Une page HTML se crée via des balises:
+    <balise attribut="value"> CONTENU </balise>
+    On doit absolument les initialiser et les fermer
+
+
+
+-->
+
+<!-- Fin page html -->
+<html>
+<!-- Header et titre -->
+<head> 
+    <!-- On peut ecrire les caractéristiques de la page via CSS -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+
+
+    <meta charset="utf-8" />
+    <title> Titre de la page </title>
+</head>
+
+<!-- Body de la page -->
+<body> 
+    <!-- Titres avec couleurs et diviseurs, les diviseurs peuvent diviser en sous partie les pages, utile pour formater différement les pages -->
+    <div> 
+    <h1> HELLO WORLD </h1>
+    </div>
+    <div>
+    <h2> HELLO WORLD Un peu moins gros</h2>
+    </div>
+
+    <!-- paragraphe et saut de ligne et jouer avec css et les class -->
+    <p class="myclass"> Paragraphe un peu long itititititititititi
+        tatatatatatatattatatatatattatatatatatt
+    </p>
+
+
+    <p> 
+        <h2>
+            Ceci est un nouveau titre pour un nouveau paragraphe
+        </h2>
+        la france est un pays fort et victorieux<br> 
+        de nombreux pays la redoute, elle est la plus forte des nations d'europe<br> 
+    </p>
+    <!-- Texte en gras -->
+    <p>
+        <h2> Test des balises et mise en forme</h2>
+        <hr>
+        <b>Texte en gras</b>
+        <hr>
+        <u>Texte souligné</u>
+        <hr>
+        <a href="file:///C:/Users/IB/Downloads/HTML.pdf">Je suis un lien</a>
+        <hr>
+        La mise en forme permet de mettre en valeur différament,<strong>les choses importantes</strong>
+        <em>et celles qui le sont moins</em>.<mark>Demarquez vous !</mark>
+
+    </p>
+    
+    <!-- les listes -->
+    <p> 
+        <h2>Test des listes</h2>
+        <ol>
+            <li>Elem 1</li>
+            <li>Elem 2</li>
+            <li>Elem 3</li>
+            <li>Elem 4</li>
+            <li>Elem 5</li>
+        </ol>
+    </p>
+
+    <!-- les photos videos et audio -->
+    <p> 
+        <h2>Test des photos video et audio</h2>
+        <img src="pika.jpg" alt="photos non dispo">
+
+        <!--<video src="pika.mp4" alt="videos non dispo">
+
+        <audio src="machin.mp3" alt="audio non dispo">-->
+    </p>
+
+    <!-- Les telechargements -->
+    <p> 
+        <h2>Test des telechargements</h2>
+        <a href="data.csv">lien de telechargements</a>
+    </p>
+
+    <!-- Les formulaires -->
+    <p> 
+        <h2>Test des formulaires</h2>
+        <form method="">
+            <input type="text" name="nom zone texte" value="zone de texte" />
+            <input type="email" name="email" value="email"/>
+            <input type="number" name="tel" value="numero"/>
+            <input type="date" name="date" value="date"/>
+            <input type="password" name="password" minlenght="8" required value="password"/>
+            <input type="checkbox" name="nom du choix" [checked] />
+            <input type="radio" name="nom du choix" [checked] />
+            <input type="button" value="Bouton cliquer" />
+        </form>
+    </p>
+
+    <p>
+        <h2> Jouer avec css, les classes les id </h2>
+        <p class="myclass"> parragraphe avec les caractéristiques de myclass </p>
+        <p id="myid"> parragraphe avec les caractéristiques de myid </p>
+        <p id="myid"> parragraphe2 avec les caractéristiques de myid </p>
+        <p>
+            <ol>
+                <li> test des first child</li>
+                <li> test des first child</li>
+                <li> test des first child</li>
+                <li> test des first child</li>
+            </ol>
+            L'idée est qu'on peut attribuer un style pour chaques parties d'une page web
+        </p>
+    </p>
+
+    <!-- Le css -->
+    <p>
+        <h2> Overflow : donne un comportement a des div selon la taille des objets</h2>
+        <div class="smalldiv">
+            <div class="smallSmalldiv">
+            
+            </div>
+        </div>
+
+        <h2> zindex, donne de l'importancde a un objet devant les autres, le plus haut z sera au dessus de sautres</h2>
+        <div class="zIndex0">
+            zindex 0
+            <div class="zIndex1">
+                zindex1
+            </div>
+        </div>
+
+        <h2> Display choisi la disposition des objets dans la div, pas mal de paramètres à jouer, bloc, flex, position a l'aide de justify</h2>
+        <div class="displayBloc">
+            <div class="zIndex0">
+            </div>
+            <div class="zIndex1">
+            </div>
+        </div>
+        <br>
+        <div class="displayFlex">
+            <p>titi et toto</p>
+            <p>tutu et tete </p>
+            <p>tata et tyty </p>
+        </div>
+        <br>
+        <div class="displayjustify">
+            <p>titi et toto</p>
+            <p>tutu et tete </p>
+            <p>tata et tyty </p>
+        </div>
+        <p> On peut utiliser aussi greid template pour quadrier la page en ligne et colonnes, mettre comme unité de mesure vw pour view width, elle calibre la taille de l'acran à la taile de l'acran de l'utilisateur
+            Grid template a l'avantage d'avoir pas mal de paramètres pour différents types dee grilles.
+        </p>
+
+    </p>
+</body>
+<!-- Fin page html -->
+</html>
