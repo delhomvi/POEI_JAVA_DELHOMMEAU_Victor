@@ -1,0 +1,70 @@
+.myclass{
+    font-size: 18px;
+    color:red;
+    background-color: yellow;
+    margin: 50px;
+    padding: 50px;
+    border:solid;
+    border-width: 2px;
+    border-radius: 50%;
+}
+
+.bigdiv{
+    background-image: url("pika.jpg");
+    width:500px;
+    height: 500px;
+}
+
+.smalldiv{
+    background-color: yellow;
+    width:300px;
+    height: 300px;
+    overflow: hidden;
+}
+.smallSmalldiv{
+    background-color: orange;
+    width:100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.zIndex1{
+    z-index: 1;
+    background-color: pink;
+    width:200px;
+    height: 200px;
+    overflow: hidden;
+}
+.zIndex0{
+    z-index: 0;
+    background-color: orange;
+    width:300px;
+    height: 300px;
+    overflow: hidden;
+}
+
+#myid{
+    color:green;
+}
+
+li:first-child{
+    color:blue;
+}
+
+
+.displayBloc{
+    display: block;
+    background-color: green;
+}
+
+.displayFlex{
+    display:flex;
+    flex-direction: row;
+    background-color: silver;
+}
+
+.displayjustify{
+    display:flex;
+    justify-content: space-evenly;
+    background-color: gold;
+}
