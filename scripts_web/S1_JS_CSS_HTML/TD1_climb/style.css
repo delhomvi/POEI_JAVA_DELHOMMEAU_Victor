@@ -1,11 +1,9 @@
 .corpus{
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    align-items: center;    
     background-color: lightgrey;
-    position: relative;
-    display: flex;
-    align-content:center;
-    height: 80vh;
-    width: 60vw;
-    align-items: center;
 }
 
 .paragraph{
@@ -53,7 +51,7 @@ hr{
 
 .button{
     font-size: small;
-    width: 10vw;
+    width: 20%;
     background-color: lightgray ;
     border-width: 3px;
     border-color: black;
@@ -66,9 +64,9 @@ hr{
 
 .line {
     display: flex;
-    width: 10vw;
+    width: 7vw;
     height: 0;
-    border: 1px solid #C4C4C4;
+    border: 2px solid black;
     margin: 3px;
     display:inline-block;
   }
