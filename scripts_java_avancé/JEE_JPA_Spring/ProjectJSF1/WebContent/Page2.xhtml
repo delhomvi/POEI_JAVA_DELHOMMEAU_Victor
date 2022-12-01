@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<style>
+* {
+	background-color: beige;
+	text-align: center;
+}
+
+body {
+	display: block;
+	justify-content: space-around;
+	opacity: 75%%;
+	width: 100vw;
+	height: 100vh;
+}
+
+h1 {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+
+p {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+
+form {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+
+.resultBox {
+	background-color: grey;
+	align-content: center;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<h1>Resultat de la prise de note</h1>
+		<p>Voici le resultat de la prise de nom dans la page précédente:</p>
+		<div>
+			<div class="resultBox">
+				Je suis
+				<h:outputText value="#{nom}" />
+				j'ai
+				<h:outputText value="#{age}" />
+				et je vit dans la ville de
+				<h:outputText value="#{ville}" />
+			</div>
+		</div>
+	</h:form>
+</body>
+</html>

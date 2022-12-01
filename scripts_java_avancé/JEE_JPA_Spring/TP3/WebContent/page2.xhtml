@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<style>
+* {
+	background-color: #636363;
+	font: italic 1.2em "Fira Sans", serif;
+	font-size: 14px;
+}
+
+h1 {
+	font-size: 25px;
+}
+</style>
+</h:head>
+<body>
+	<h:form>
+		<h1>Titre de la page 2 de resultat</h1>
+		<p>
+			Bonjour
+			<h:outputText value="Monsieur" rendered="#{User.isWhatM()}" />
+			<h:outputText value="Madame" rendered="#{User.isWhatF()}" />
+			<h:outputText value="#{User.nom}" />
+			<h:outputText value="#{User.prenom}" />
+
+		</p>
+	</h:form>
+	<div>
+		<h:form>
+			<h:outputText value="#{User.page}" />
+			<h:commandButton action="#{User.nextPage()}" value="nextPage" />
+		</h:form>
+	</div>
+</body>
+</html>

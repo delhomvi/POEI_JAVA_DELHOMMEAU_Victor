@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<style>
+* {
+	background-color: beige;
+	text-align: center;
+}
+
+body {
+	display: block;
+	justify-content: space-around;
+	opacity: 75%%;
+}
+
+h1 {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+
+p {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+
+form {
+	background-color: lightgrey;
+	border-radius: 4px;
+}
+</style>
+</h:head>
+<body>
+	<h1>Formulaire de prise de nom</h1>
+	<p>Le but de cette page est de demander le nom puis de voir le
+		resultat à la seconde page</p>
+	<h:form>
+		nom: <h:inputText value="#{nom}" />
+		<br />
+		age: <h:inputText value="#{age}" />
+		<br />
+		ville: <h:inputText value="#{ville}" />
+		<br />
+		<br />
+		<br />
+		<h:commandButton action="/faces/Page2.xhtml"
+			value="Resultat de la prise de nom" />
+	</h:form>
+</body>
+</html>

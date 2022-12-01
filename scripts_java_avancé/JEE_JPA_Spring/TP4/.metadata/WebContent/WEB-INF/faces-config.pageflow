@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf16693821278935" configfile="/TP4/WebContent/WEB-INF/faces-config.xml">
+  <nodes xsi:type="pageflow:PFPage" name="index2.xhtml" x="24" y="192" width="73" height="97" id="pf16693849940046" referenceLink="//@navigationRule.2/@fromViewId|" outlinks="pf16693849940047 pf16693849940048 pf16693849940049" path="/index2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conseil1.xhtml" x="300" y="96" width="97" height="73" id="pf166938499400410" referenceLink="//@navigationRule.0/@navigationCase.0/@toViewId|" inlinks="pf16693849940047" path="/conseil1.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conseil2.xhtml" x="300" y="216" width="121" height="85" id="pf166938499400411" referenceLink="//@navigationRule.1/@navigationCase.0/@toViewId|" inlinks="pf16693849940048" path="/conseil2.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="conseil3.xhtml" x="300" y="336" width="157" height="97" id="pf166938499400412" referenceLink="//@navigationRule.2/@navigationCase.0/@toViewId|" inlinks="pf16693849940049" path="/conseil3.xhtml"/>
+  <links id="pf16693849940047" target="pf166938499400410" source="pf16693849940046" outcome="1" redirect="true" fromaction="#{IMC.nextPage()}"/>
+  <links id="pf16693849940048" target="pf166938499400411" source="pf16693849940046" outcome="2" redirect="true" fromaction="#{IMC.nextPage()}"/>
+  <links id="pf16693849940049" target="pf166938499400412" source="pf16693849940046" outcome="3" redirect="true" fromaction="#{IMC.nextPage()}"/>
+</pageflow:Pageflow>

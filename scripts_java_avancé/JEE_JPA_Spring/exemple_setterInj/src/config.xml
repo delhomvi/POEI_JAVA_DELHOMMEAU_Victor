@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+<!-- 
+Construction d'objet avec des meme classses mais atributs différents utilisation de value dans le cas de valeurs, et ref dans le cas de beans, donc d'objets
+Luigi derive de mario, et possede un objet sabre, il a les mêmes atributs que mario mais est un objet différent
+Dans ces cas besoins de getters et setters
+ -->
+	<bean id="gun" class="cours.spring.Gun"></bean>
+	<bean id="sabre" class="cours.spring.Sabre"></bean>
+
+	<bean id="bowser" class="cours.spring.Bowser">
+		<property name="name" value="bowser"></property>
+		<property name="obj" ref="gun"></property>
+	</bean>
+	
+	<bean id="bowserJr" class="cours.spring.Bowser">
+		<property name="name" value="bowserJr"></property>
+		<property name="obj" ref="gun"></property>
+	</bean>
+
+	<bean id="mario" class="cours.spring.Mario">
+		<property name="name" value="mario"></property>
+		<property name="obj" ref="sabre"></property>
+	</bean>
+
+	<bean id="luigi" class="cours.spring.Mario">
+		<property name="name" value="luigi"></property>
+		<property name="obj" ref="sabre"></property>
+	</bean>
+
+</beans>
+
+
+

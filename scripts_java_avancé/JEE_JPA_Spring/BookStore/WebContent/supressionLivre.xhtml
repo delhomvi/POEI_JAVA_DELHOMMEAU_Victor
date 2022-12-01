@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<body>
+	<!-- Bandeau déroulant valider et anuler -->
+	<h1>Supprimer les livres</h1>
+	<h:form>
+		<h:inputText value="#{suppLivres.title}" />
+		<h:inputText value="#{suppLivres.author}" />
+		<h:inputText value="#{suppLivres.dateOfPublication}" />
+		<h:inputText value="#{suppLivres.price}" />
+		<h:commandButton action="" value="Valider la modification" />
+		<h:commandButton action="index" value="Annuler les modifications" />
+	</h:form>
+</body>
+</html>

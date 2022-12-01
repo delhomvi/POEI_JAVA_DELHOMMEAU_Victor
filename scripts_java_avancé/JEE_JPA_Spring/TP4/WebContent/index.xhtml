@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+<style>
+*{
+background-color: #636363;
+color: white;
+font: small-caps bold 12px/1 sans-serif;
+}
+
+body{
+display:flex;
+flex-direction: column;
+align-content: center;
+}
+
+h1{
+font-size:30px;
+}
+
+.IMCbox{
+background-color: #646464;
+border-radius: 6px;
+}
+</style>
+</h:head>
+<body>
+	<div class="IMCbox">
+		<h1>Calcul de l'IMC</h1>
+		<br />
+		<p>Cette page a pour but de calculer l'IMC d'une personne, les
+			paramètres sont</p>
+		<br />
+		<h:form>
+			<div>
+				Nom
+				<h:inputText value="#{IMC.nom}" />
+			</div>
+			<div>
+				Prenom
+				<h:inputText value="#{IMC.prenom}" />
+			</div>
+			<div>
+				Age
+				<h:inputText value="#{IMC.age}" />
+			</div>
+			<h:selectOneRadio value="#{IMC.sexe}">
+				<f:selectItem itemLabel="Homme" itemValue="Homme" />
+				<f:selectItem itemLabel="Femme" itemValue="Femme" />
+			</h:selectOneRadio>
+			<div>
+				Poids (en kg)
+				<h:inputText value="#{IMC.poids}" />
+			</div>
+			<div>
+				Taille (en cm)
+				<h:inputText value="#{IMC.taille}" />
+			</div>
+			<h:commandButton action="index2" value="Calcul de l'IMC et conseils" />
+		</h:form>
+	</div>
+</body>
+</html>
