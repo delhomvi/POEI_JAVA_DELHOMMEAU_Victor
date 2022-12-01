@@ -68,3 +68,10 @@ li:first-child{
     justify-content: space-evenly;
     background-color: gold;
 }
+
+/* Surcharge des classes */
+@media screen and (max-width: 920px) {
+    body{
+        background-color: red;
+    }
+}
