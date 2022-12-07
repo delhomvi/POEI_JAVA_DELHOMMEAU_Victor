@@ -1,0 +1,38 @@
+.bgColor{
+    z-index: -1;
+    background-color: black;
+    height: 50vh;
+    width: 50vw;
+}
+
+.circle {
+    height: 80px;
+    width: 80px;
+    border-radius: 50%;
+    background-color: red;
+  }
+
+#spriteGuerrier{
+    z-index: 1;
+    background: url("guerrier.png") 0px 0px;
+    height: 48px;
+    width: 32px;
+}
+#spriteMage{
+    z-index: 1;
+    background: url("mage.png") 0px 0px;
+    height: 48px;
+    width: 32px;
+}
+#spritePaladin{
+    z-index: 1;
+    background: url("paladin.png") 0px 0px;
+    height: 48px;
+    width: 32px;
+}
+#spriteAventurier{
+    z-index: 1;
+    background-image: url("aventurier.png") 0px 0px;
+    height: 48px;
+    width: 32px;
+}

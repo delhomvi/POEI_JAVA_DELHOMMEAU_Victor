@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Book</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script>
+		let listeLivre=[];
+		let ligneToDisplay="";
+        function monCB( data, status )
+        {
+            $("#test").text( "le temps: " + data + "  Status: " + status);
+        }
+
+        function succesCB( data, status )
+        {
+            console.log( "post OK ! " + data + "   " +status );
+        }
+          
+        function save( )
+        {
+            valTitre = $("#titre").val();
+            valAuteur = $("#auteur").val();
+            $("#result").text(valTitre + " de " + valAuteur);
+            jQuery.ajax(
+                {
+                    headers: { 
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json' 
+                    },
+                    'type': 'POST',
+                    //'url': "http://localhost:8080/createLivre",
+                    'url': "http://localhost:8080/addLivre",
+                    'data': JSON.stringify({ titre : valTitre, auteur : valAuteur  }),
+                    'dataType': 'json',
+                    'success': succesCB
+                }
+            );
+            listeLivre.push([valTitre,valAuteur])
+        }
+
+        function showLivres(){
+        	listeLivre.forEach(function(item, array) {
+        		ligneToDisplay+=item[0]+" de "+item[1]+ ", ";
+        		console.log(item[0]+" de "+item[1]);
+        		});
+        	$("#resultShow").text(ligneToDisplay);
+            }
+        
+
+    </script>
+</head>
+<body>
+	<h1>Formulaire de création de livre</h1>
+	<p>Remplissez le formulaire suivant</p>
+	<br>
+	<input id="titre" placeholder="entrez le titre">
+	<br>
+	<input id="auteur" placeholder="entrez l'auteur">
+	<br>
+	<br>
+	<button onclick="save()">Create book</button>
+	<br>
+	<div id="result"></div>
+	<button onclick="showLivres()">AddBookToList</button>
+	<br>
+	<p>Liste des livres ajoutés à la liste:</p>
+	<br>
+	<br>
+	<div id="resultShow"></div>
+</body>
+</html>
