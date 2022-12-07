@@ -1,2 +1,2 @@
-<h1>{{favoritePet}}</h1>
-<button (click)="onChange()">Change</button>
+<h1>Sport choisis: {{selectedSport}}</h1>
+<app-sport [sports]="sportList" (selectSport)="selectSport($event)"></app-sport>

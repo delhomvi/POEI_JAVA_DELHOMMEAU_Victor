@@ -6,7 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  favoritePet: String = 'Dogs';
-  onChange(): void { this.favoritePet = 'cats';}
-
+  selectedSport: string='';
+  sportList: string[] = ['foot','tennis','rugby'];
+  selectSport(sport: string): void{
+    this.selectedSport=sport;
+  }
 }
