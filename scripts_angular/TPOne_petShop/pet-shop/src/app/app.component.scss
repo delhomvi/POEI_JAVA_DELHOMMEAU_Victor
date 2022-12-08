@@ -1,0 +1,10 @@
+.app{
+    height: 100%;
+    .navbar{
+        height: 60px;
+    }
+    .pet{
+        height: calc(100% - 60px);
+        margin: 20px;
+    }
+}
