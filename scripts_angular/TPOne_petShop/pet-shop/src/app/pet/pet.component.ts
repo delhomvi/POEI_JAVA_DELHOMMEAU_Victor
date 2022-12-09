@@ -12,15 +12,14 @@ export class PetComponent {
   constructor(){}
 
   ngOnInit(): void{
-    this.createPets();
   }
 
   createPets(): void {
-    this.pets.push(
+    this.pets=[
       {id:1,name:'Milou',species:'chien',price:500,isAvailable:true},
       {id:2,name:'Garfiel',species:'chat',price:400,isAvailable:true},
       {id:3,name:'Nemo',species:'poisson',price:10,isAvailable:true},
       {id:4,name:'BugsBunny',species:'lapin',price:50,isAvailable:true},
-    )
+    ]
   }
 }

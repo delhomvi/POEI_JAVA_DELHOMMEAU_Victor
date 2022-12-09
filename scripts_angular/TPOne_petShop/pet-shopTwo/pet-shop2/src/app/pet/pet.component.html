@@ -1,0 +1,10 @@
+<div class="pet">
+    <app-pet-list
+    [petList]="pets"
+    (idSelected)="onChangeSelectedPet($event)"
+    >
+    </app-pet-list>
+    <app-pet-detail
+    [selectedPet]="selectedPet"
+    ></app-pet-detail>
+  </div>

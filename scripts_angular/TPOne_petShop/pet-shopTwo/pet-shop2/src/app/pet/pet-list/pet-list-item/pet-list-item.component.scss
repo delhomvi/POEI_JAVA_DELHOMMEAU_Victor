@@ -1,0 +1,12 @@
+.petListItem{
+    border: 1px solid blueviolet;
+    border-radius: 10px;
+    margin: 5px 0;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+.petListItem:hover{
+    background-color: blueviolet;
+    color: white;
+}
