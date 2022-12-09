@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { PetService } from 'src/app/pet.service';
 import { IPet } from '../model/pet';
 
 @Component({
@@ -7,5 +8,11 @@ import { IPet } from '../model/pet';
   styleUrls: ['./pet-detail.component.scss']
 })
 export class PetDetailComponent {
-  @Input() selectedPet : IPet | undefined | null;
+
+  constructor(private petService: PetService){}
+
+  ngOnInit(): void{}
+
+  get pet(){return this.petService.selectedPet}
+
 }

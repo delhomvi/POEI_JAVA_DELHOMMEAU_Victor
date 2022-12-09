@@ -1,10 +1,7 @@
 <div class="pet">
-    <app-pet-list
-    [petList]="pets"
-    (idSelected)="onChangeSelectedPet($event)"
-    >
-    </app-pet-list>
-    <app-pet-detail
-    [selectedPet]="selectedPet"
-    ></app-pet-detail>
+  <div class="pet-read-container" *ngIf="!isCreatingPet">
+    <app-pet-list></app-pet-list>
+    <app-pet-detail></app-pet-detail>
   </div>
+  <app-add-pet *ngIf="isCreatingPet"></app-add-pet>
+</div>

@@ -1,11 +1,12 @@
-<div class="pet-detail" *ngIf="selectedPet; else noPetSelected">
+<div class="pet-detail" *ngIf="pet; else noPetSelected">
     <div class="title">
-        <h1>Nom :{{selectedPet.name}}</h1>
-        <h2>Espece :{{selectedPet.species}}</h2>
+        <h1>Nom :{{pet.name}}</h1>
+        <h2>Espece :{{pet.species}}</h2>
     </div>
     <div class="pet-info">
-        <p class="{{ selectedPet.isAvailable? 'available' : 'sold'}}"> Disponibilité: {{selectedPet.isAvailable?'Dispo':'Non dispo'}}</p>
-        <p class="price">Prix: {{selectedPet.price}} euros</p>
+        <img [src]="pet.imageUrl" alt="pas d'image">
+        <p class="{{ pet.isAvailable? 'available' : 'sold'}}"> Disponibilité: {{pet.isAvailable?'Dispo':'Non dispo'}}</p>
+        <p class="price">Prix: {{pet.price}} euros</p>
     </div>
 </div>
 
