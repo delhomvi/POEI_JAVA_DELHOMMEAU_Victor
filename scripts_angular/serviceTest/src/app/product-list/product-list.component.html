@@ -1,1 +1,4 @@
-<p>product-list works!</p>
+<div class="productList">
+    Produits:
+    <p *ngFor="let prod of productList" (click)="onSelectProduct(prod)">{{prod}}</p>
+</div>
