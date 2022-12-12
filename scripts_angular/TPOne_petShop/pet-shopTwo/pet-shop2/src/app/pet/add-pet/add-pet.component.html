@@ -12,5 +12,5 @@
 
     <input type="text" formControlName="imageUrl" placeholder="URL de l'image" />
 
-    <button>Créer mon Animal</button>
+    <button [disabled]="!petForm">Créer mon Animal</button>
   </form>

@@ -1,0 +1,5 @@
+<input type="text" #titleInput>
+<button (click)="onAddMovie(titleInput.value)">Add Movie</button>
+<ul>
+  <li *ngFor="let movie of movies">{{movie.title}}</li>
+</ul>

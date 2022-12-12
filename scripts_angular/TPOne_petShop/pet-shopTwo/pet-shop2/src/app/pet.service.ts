@@ -45,5 +45,22 @@ export class PetService {
 
       this.pets.push(pet);
     }
+
+
   }
+  // createPet(nom: string, speciess: string, price: number,isAvailable: boolean,imageUrl: string): void {
+  //   const ids: number[] = this.pets.map((pet) => pet.id);
+  //   const maxID: number = Math.max(...ids)+1;
+  //   const pet: IPet = {
+  //     id: maxID,
+  //     name: nom,
+  //     species: <Species>speciess,
+  //     price: price,
+  //     isAvailable: isAvailable,
+  //     imageUrl: imageUrl,
+  //   };
+  //   this.pets.push(pet);
+  //   this.isCreatingPet=!this.isCreatingPet
+  // }
+
 }
