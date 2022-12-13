@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { PetService } from 'src/app/pet.service';
 
-import { IPet } from '../../model/pet';
+import { IPet } from '../../../model/pet';
+import { PetService } from '../../../pet.service';
 
 @Component({
   selector: 'app-pet-list-item',
@@ -11,9 +11,9 @@ import { IPet } from '../../model/pet';
 export class PetListItemComponent {
   @Input() pet!: IPet;
 
-  get selectedPetId(): number {
+  get selectedPetId(): string {
     if (!this.petService.selectedPet) {
-      return 0;
+      return '';
     }
     return this.petService.selectedPet.id;
   }

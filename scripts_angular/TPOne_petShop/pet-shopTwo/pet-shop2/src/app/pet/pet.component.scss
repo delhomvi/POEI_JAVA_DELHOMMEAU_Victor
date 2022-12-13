@@ -1,20 +1,3 @@
-.pet {
+.pet{
   height: 100%;
-
-  .pet-read-container {
-    display: flex;
-    height: 100%;
-    app-pet-list {
-      flex: 1;
-    }
-
-    app-pet-detail {
-      flex: 2;
-    }
-
-    app-pet-list,
-    app-pet-detail {
-      padding: 10px;
-    }
-  }
 }
