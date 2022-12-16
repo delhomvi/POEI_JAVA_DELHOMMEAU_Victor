@@ -3,6 +3,8 @@ package org.example;
 import org.example.model.Product;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class Main {
@@ -14,13 +16,15 @@ public class Main {
 
         // Création des 5 produits
         Product productC;
+        List<String> dates = new ArrayList<String>();
+        dates.add("01/01/2022");dates.add("02/01/2022");dates.add("03/01/2022");dates.add("04/01/2022");dates.add("05/01/2022");dates.add("06/01/2022");
         transac.begin();
         for(int i=0;i<=5;i++){
             productC= new Product();
             productC.setBrand("brand "+(i+1));
             productC.setReference("ref "+(i+1));
-            productC.setPurchaseDate(null);
-            productC.setPrice(1.00);
+            productC.setPurchaseDate(new Date(dates.get(i)));
+            productC.setPrice(98.0+i);
             productC.setNumberInStock(i);
             em.persist(productC);
             transac.commit();
@@ -68,5 +72,29 @@ public class Main {
             System.out.println(String.format("%10s | %10s | %10s | %10s | %10s",p.getId(),p.getBrand(),p.getPrice(),p.getNumberInStock(),p.getPurchaseDate()));
         }
 
+        // Afficher tout les produits
+        System.out.println("Resultat Exo 5: ");
+        List<Product> results4 = em.createNativeQuery("SELECT * FROM product",Product.class).getResultList();
+        for(Product p : results4){
+            System.out.println(String.format("%10s | %10s | %10s | %10s | %10s",p.getId(),p.getBrand(),p.getPrice(),p.getNumberInStock(),p.getPurchaseDate()));
+        }
+
+        //Afficher liste des produits dont le prix est supérieur à 100 euros
+        System.out.println("Resultat Exo 6: ");
+        List<Product> results5 = em.createNativeQuery("SELECT * FROM product where price>=100",Product.class).getResultList();
+        for(Product p : results5){
+            System.out.println(String.format("%10s | %10s | %10s | %10s | %10s",p.getId(),p.getBrand(),p.getPrice(),p.getNumberInStock(),p.getPurchaseDate()));
+        }
+
+        //Afficher liste des produits dont le prix est supérieur à 100 euros
+        System.out.println("Resultat Exo 7: ");
+        Date datelow = new Date(01/01/2022);
+        Date dateup = new Date(03/01/2022);
+        Query query2 = em.createQuery("select p from Product p where 2022-01-01<=p.purchaseDate ");
+        List products = query2.getResultList();
+        for(Object product: products){
+            Product p = (Product) product;
+            System.out.println(String.format("%10s | %10s | %10s | %10s | %10s",p.getId(),p.getBrand(),p.getPrice(),p.getNumberInStock(),p.getPurchaseDate()));
+        }
     }
 }
