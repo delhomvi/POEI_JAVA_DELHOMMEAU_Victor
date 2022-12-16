@@ -1,0 +1,7 @@
+<div class="navbar">
+  <a routerLink="home">Accueil</a>
+  <a routerLink="pet">Boutique</a>
+  <button (click)="onToggleAuth()" [ngClass]="{ green: isAuth }">
+    {{ isAuth ? "Connecté" : "Déconnecté" }}
+  </button>
+</div>

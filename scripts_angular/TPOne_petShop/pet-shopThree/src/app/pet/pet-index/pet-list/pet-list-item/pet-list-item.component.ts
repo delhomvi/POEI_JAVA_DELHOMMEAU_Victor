@@ -11,12 +11,5 @@ import { PetService } from '../../../pet.service';
 export class PetListItemComponent {
   @Input() pet!: IPet;
 
-  get selectedPetId(): string {
-    if (!this.petService.selectedPet) {
-      return '';
-    }
-    return this.petService.selectedPet.id.toString();
-  }
-
   constructor(private petService: PetService) {}
 }

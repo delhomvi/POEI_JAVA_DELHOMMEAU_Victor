@@ -3,6 +3,6 @@
     <app-pet-list-item
       *ngFor="let pet of petList"
       [pet]="pet"
-      (click)="onClickPet(pet.id)"
+      (click)="onClickPet(pet.id.toString())"
     ></app-pet-list-item>
   </div>

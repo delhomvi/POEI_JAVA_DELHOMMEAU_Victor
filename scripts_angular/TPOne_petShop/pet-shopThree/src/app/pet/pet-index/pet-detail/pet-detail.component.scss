@@ -1,0 +1,39 @@
+.pet-detail {
+  height: 100%;
+  text-align: center;
+  border: 1px solid grey;
+  border-radius: 50px;
+
+  .pet-info {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    img {
+      max-height: 50%;
+      max-width: 50%;
+      margin: auto;
+    }
+
+    .price {
+      font-size: 200%;
+    }
+
+    .available {
+      color: green;
+    }
+
+    .sold {
+      color: red;
+    }
+  }
+
+  .no-pet-selected {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 200%;
+  }
+}

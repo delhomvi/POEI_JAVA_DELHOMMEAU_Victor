@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { map } from 'rxjs';
+import { map, Subject } from 'rxjs';
 
 import { IPet } from './model/pet';
 
@@ -12,18 +12,17 @@ export class PetService {
   private petsUrl =
     'https://formation-6e588-default-rtdb.europe-west1.firebasedatabase.app/pets.json';
   pets: IPet[] = [];
-  selectedPet: IPet | undefined | null = null;
+  petsReady$ = new Subject<void>();
 
   constructor(private http: HttpClient, private router: Router) {
     this.getPets();
   }
 
-  selectPet(petId: string): void {
-    if (this.selectedPet?.id === +petId) {
-      this.selectedPet = null;
-    } else {
-      this.selectedPet = this.pets.find((pet) => pet.id.toString() === petId);
+  petWithId(petId: string): IPet | null {
+    if (!this.pets.some((pet) => pet.id === petId)) {
+      return null;
     }
+    return this.pets.find((pet) => pet.id === petId)!;
   }
 
   createPet(petToCreate: any): void {
@@ -42,7 +41,7 @@ export class PetService {
 
           for (const key in res) {
             const pet: IPet = {
-              id: +key,
+              id: key,
               // ...res[key],
               name: res[key].name,
               isAvailable: res[key].isAvailable,
@@ -58,6 +57,7 @@ export class PetService {
       )
       .subscribe((res: IPet[]) => {
         this.pets = res;
+        this.petsReady$.next();
       });
   }
 }
