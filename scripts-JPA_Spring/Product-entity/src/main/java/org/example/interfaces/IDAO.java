@@ -16,4 +16,6 @@ public interface IDAO<T> {
 
     void close();
 
+
+
 }

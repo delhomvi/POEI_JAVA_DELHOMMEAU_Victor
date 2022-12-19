@@ -88,9 +88,7 @@ public class Main {
 
         //Afficher liste des produits dont le prix est supérieur à 100 euros
         System.out.println("Resultat Exo 7: ");
-        Date datelow = new Date(01/01/2022);
-        Date dateup = new Date(03/01/2022);
-        Query query2 = em.createQuery("select p from Product p where 2022-01-01<=p.purchaseDate ");
+        Query query2 = em.createQuery("select p from Product p where p.purchaseDate<'2022-03-01' and p.purchaseDate>'2022-01-01'");
         List products = query2.getResultList();
         for(Object product: products){
             Product p = (Product) product;
