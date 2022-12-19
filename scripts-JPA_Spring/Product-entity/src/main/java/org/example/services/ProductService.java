@@ -6,6 +6,8 @@ import org.example.model.Product;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.Query;
+import java.util.List;
 
 public class ProductService implements IDAO<Product> {
     private EntityManagerFactory emf;
@@ -55,5 +57,25 @@ public class ProductService implements IDAO<Product> {
     public void close() {
         em.close();
         emf.close();
+    }
+
+    @Override
+    public List<Product> findAll() {
+        Query query = em.createQuery("select p from Product p");
+        List<Product> list = query.getResultList();
+        return list;
+    }
+
+    public List<Product> filterByPrice(double min){
+        Query query = em.createQuery("select p from Product p where p.price >= :min");
+        query.setParameter("min",min);
+        List<Product> list = query.getResultList();
+        return list;
+    }
+
+    public List<Product> filterByDate(Date min,Date max) throws Exception{
+        if(min.before(max)){
+            Query query = em.createQuery("select p from Product p where purchaseDate");
+        }
     }
 }
