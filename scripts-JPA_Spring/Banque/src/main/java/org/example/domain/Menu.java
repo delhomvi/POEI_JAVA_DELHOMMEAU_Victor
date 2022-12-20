@@ -27,13 +27,13 @@ public class Menu {
         System.out.println("7 - modif agency");
         System.out.println("other - exit");
         String choice = scanner.nextLine();
-        if(choice.equals("1")){addAccount();}
-        else if(choice.equals("2")){addClient();}
-        else if(choice.equals("3")){addAgency();}
-        else if(choice.equals("4")){show();showClients();}
-        else if(choice.equals("5")){modifAccount();}
-        else if(choice.equals("6")){modifClient();}
-        else if(choice.equals("7")){modifAgency();}
+        if(choice.equals("1")){addAccount();start();}
+        else if(choice.equals("2")){addClient();start();}
+        else if(choice.equals("3")){addAgency();start();}
+        else if(choice.equals("4")){show();showClients();start();}
+        else if(choice.equals("5")){modifAccount();start();}
+        else if(choice.equals("6")){modifClient();start();}
+        else if(choice.equals("7")){modifAgency();start();}
         else{
             em.close();
             emf.close();
@@ -185,7 +185,7 @@ public class Menu {
         List<Compte> listComptess = query.getResultList();
         for(Object c: listComptess){
             Compte cc = (Compte) c;
-            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
+            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n SOLDE: %s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getSolde(),cc.getAgence().getAdresse()));
         }
         transac.commit();
         System.out.println("-------- End show --------");
