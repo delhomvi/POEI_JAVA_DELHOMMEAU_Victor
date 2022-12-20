@@ -32,7 +32,7 @@ public class Menu {
         else if(choice.equals("3")){addAgency();}
         else if(choice.equals("4")){show();showClients();}
         else if(choice.equals("5")){modifAccount();}
-        else if(choice.equals("6")){}
+        else if(choice.equals("6")){modifClient();}
         else if(choice.equals("7")){modifAgency();}
         else{
             em.close();
@@ -387,6 +387,36 @@ public class Menu {
         em.flush();
         transac.commit();
         showAgency();
+        System.out.println("-------- End Modif account--------");
+
+    }
+
+    public static void modifClient(){
+        System.out.println("-------- Start modif Client --------");
+        showClients();
+        System.out.println("Which one you want to modify ? (ID): ");
+        String modCLstr = scanner.nextLine();
+        int modCL = Integer.parseInt(modCLstr);
+
+        transac.begin();
+
+        Client CLToMod = em.find(Client.class,modCL);
+
+        System.out.println("Entrez les nouvelles informations: ");
+        System.out.println("Nom >");
+        String nom = scanner.nextLine();
+        System.out.println("Prenom >");
+        String prenom = scanner.nextLine();
+        System.out.println("Date de naissance >");
+        String dateBirth = scanner.nextLine();
+
+        CLToMod.setNom(nom);
+        CLToMod.setPrenom(prenom);
+        CLToMod.setDateNaissance(new Date(dateBirth));
+
+        em.flush();
+        transac.commit();
+        showClients();
         System.out.println("-------- End Modif account--------");
 
     }
