@@ -16,7 +16,7 @@ public class Menu {
 
     public static void start(){
         System.out.println("Choix d'action sur la banque");
-        initt();
+        //initt();
 
         System.out.println("1 - add account");
         System.out.println("2 - add client");
@@ -29,8 +29,8 @@ public class Menu {
         String choice = scanner.nextLine();
         if(choice.equals("1")){addAccount();}
         else if(choice.equals("2")){addClient();}
-        else if(choice.equals("3")){addAccount();}
-        else if(choice.equals("4")){show();}
+        else if(choice.equals("3")){}
+        else if(choice.equals("4")){show();showClients();}
         else if(choice.equals("5")){}
         else if(choice.equals("6")){}
         else if(choice.equals("7")){}
@@ -191,6 +191,19 @@ public class Menu {
         System.out.println("-------- End show --------");
     }
 
+    public static void showClients(){
+        System.out.println("-------- Init show clients --------");
+        transac.begin();
+        Query query = em.createNativeQuery("SELECT * from client",Client.class);
+        List<Client> listclients = query.getResultList();
+        for(Object c: listclients){
+            Client cc = (Client) c;
+            System.out.println(String.format("----\n ID: %s\n NOM: %s\n PRENOM: %s\n DATE NAISSANCE: %s\n",cc.getId(),cc.getNom(),cc.getPrenom(),cc.getDateNaissance()));
+        }
+        transac.commit();
+        System.out.println("-------- End show clients--------");
+    }
+
     public static void addClient(){
         System.out.println("-------- Start add client--------");
         System.out.println("Add New Client ? (y/n): ");
@@ -219,6 +232,7 @@ public class Menu {
         } else {
             System.out.println("Exit");
         }
+        showClients();
         System.out.println("-------- End add --------");
     }
 
@@ -227,7 +241,7 @@ public class Menu {
         System.out.println("Add New Account ? (y/n): ");
         String newClient = scanner.nextLine();
         Client chosenClient;
-
+        showClients();
         if (newClient.matches("y|yes|Y|YES|ye|YE")) {
             transac.begin();
 
@@ -254,15 +268,10 @@ public class Menu {
             Agence agenceSelect = (Agence)query1.getSingleResult();
 
             System.out.println("Choisissez un bénéficiaire:");
-            List<Client> Clients = em.createQuery("SELECT a FROM Client a",Client.class).getResultList();
-            for(Client c : Clients){
-                System.out.println(String.format("%2s | %10s | %10s | %10s |",c.getId(),c.getNom(),c.getPrenom(),c.getDateNaissance()));
-            }
             System.out.println("ID client >");
             String id_client = scanner.nextLine();
-            Query query2 = em.createQuery("select a from Client c where c.id="+id_client);
+            Query query2 = em.createQuery("select c from Client c where c.id="+id_client);
             Client clientSelected = (Client)query2.getSingleResult();
-
 
 
             acc.setIBAN(IBAN);
@@ -278,7 +287,7 @@ public class Menu {
         } else {
             System.out.println("DONE");
         }
-
+        show();
         System.out.println("-------- End add --------");
     }
 
