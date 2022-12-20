@@ -33,7 +33,7 @@ public class Menu {
         else if(choice.equals("4")){show();showClients();}
         else if(choice.equals("5")){modifAccount();}
         else if(choice.equals("6")){}
-        else if(choice.equals("7")){}
+        else if(choice.equals("7")){modifAgency();}
         else{
             em.close();
             emf.close();
@@ -363,6 +363,30 @@ public class Menu {
         em.flush();
         transac.commit();
 
+        System.out.println("-------- End Modif account--------");
+
+    }
+
+    public static void modifAgency(){
+        System.out.println("-------- Start modif agency --------");
+        showAgency();
+        System.out.println("Which one you want to modify ? (ID): ");
+        String modAGstr = scanner.nextLine();
+        int modAG = Integer.parseInt(modAGstr);
+
+        transac.begin();
+
+        Agence AgToMod = em.find(Agence.class,modAG);
+
+        System.out.println("Entrez les nouvelles informations: ");
+        System.out.println("Adresse >");
+        String adresse = scanner.nextLine();
+
+        AgToMod.setAdresse(adresse);
+
+        em.flush();
+        transac.commit();
+        showAgency();
         System.out.println("-------- End Modif account--------");
 
     }
