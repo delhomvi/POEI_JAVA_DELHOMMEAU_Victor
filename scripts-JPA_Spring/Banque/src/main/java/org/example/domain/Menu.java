@@ -29,9 +29,9 @@ public class Menu {
         String choice = scanner.nextLine();
         if(choice.equals("1")){addAccount();}
         else if(choice.equals("2")){addClient();}
-        else if(choice.equals("3")){}
+        else if(choice.equals("3")){addAgency();}
         else if(choice.equals("4")){show();showClients();}
-        else if(choice.equals("5")){}
+        else if(choice.equals("5")){modifAccount();}
         else if(choice.equals("6")){}
         else if(choice.equals("7")){}
         else{
@@ -204,6 +204,19 @@ public class Menu {
         System.out.println("-------- End show clients--------");
     }
 
+    public static void showAgency(){
+        System.out.println("-------- Init show Agency --------");
+        transac.begin();
+        Query query = em.createNativeQuery("SELECT * from agency",Agence.class);
+        List<Agence> listagence = query.getResultList();
+        for(Object c: listagence){
+            Agence cc = (Agence) c;
+            System.out.println(String.format("----\n ID: %s\n Adresse: %s\n ",cc.getId(),cc.getAdresse()));
+        }
+        transac.commit();
+        System.out.println("-------- End show Agency --------");
+    }
+
     public static void addClient(){
         System.out.println("-------- Start add client--------");
         System.out.println("Add New Client ? (y/n): ");
@@ -291,28 +304,54 @@ public class Menu {
         System.out.println("-------- End add --------");
     }
 
-    public static void exo(){
+    public static void addAgency(){
+        System.out.println("-------- Start add Agency--------");
+        System.out.println("Add New Agency ? (y/n): ");
+        String newClient = scanner.nextLine();
+        Client chosenClient;
+        showAgency();
+        if (newClient.matches("y|yes|Y|YES|ye|YE")) {
+            transac.begin();
 
+            Agence ag = new Agence();
 
+            System.out.println("Entrez les informations suivantes: ");
+            System.out.println("Adresse >");
+            String adresse = scanner.nextLine();
 
+            ag.setAdresse(adresse);
+
+            em.persist(ag);
+            transac.commit();
+        } else {
+            System.out.println("DONE");
+        }
+        showAgency();
+        System.out.println("-------- End add --------");
+    }
+
+    public static void modifAccount(){
         System.out.println("-------- Start modif account --------");
+        show();
+        showAgency();
         System.out.println("Which one you want to modify ? (ID): ");
         String modClienIDstr = scanner.nextLine();
         int modClienID = Integer.parseInt(modClienIDstr);
+
         transac.begin();
+
         Compte accountToMod = em.find(Compte.class,modClienID);
+
         System.out.println("Entrez les nouvelles informations: ");
         System.out.println("IBAN >");
         String IBANN = scanner.nextLine();
+
         System.out.println("Libel >");
         String Libell = scanner.nextLine();
+
         System.out.println("Solde >");
         String balancee= scanner.nextLine();
-        System.out.println("Choisissez une agence:");
-        List<Agence> Agencess = em.createQuery("SELECT a FROM Agence a",Agence.class).getResultList();
-        for(Agence a : Agencess){
-            System.out.println(String.format("%10s | %10s |",a.getId(),a.getAdresse()));
-        }
+
         System.out.println("ID agence >");
         String id_agencee = scanner.nextLine();
         Query query3 = em.createQuery("select a from Agence a where a.id="+id_agencee);
@@ -324,11 +363,7 @@ public class Menu {
         em.flush();
         transac.commit();
 
-        System.out.println("-------- End Modif --------");
-
-
-
-
+        System.out.println("-------- End Modif account--------");
 
     }
 
