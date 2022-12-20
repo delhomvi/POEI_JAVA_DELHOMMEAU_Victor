@@ -1,9 +1,6 @@
 package org.example.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
 
@@ -11,21 +8,25 @@ import java.util.Date;
 @Table(name="client")
 public class Client {
     @Id
+    @GeneratedValue(strategy = GenerationType. IDENTITY )
     private int id;
     private String nom;
+
     private String prenom;
+
+    @ManyToMany(mappedBy = "clients")
+    private Collection<Compte> comptes;
+
     private Date dateNaissance;
 
-    @ManyToMany(mappedBy = "listeClient")
-    private Collection<Compte> listeCompte;
-
-    public int getId() {
-        return id;
+    public Date getDateNaissance() {
+        return dateNaissance;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setDateNaissance(Date dateDeNaissance) {
+        this.dateNaissance = dateDeNaissance;
     }
+
 
     public String getNom() {
         return nom;
@@ -43,19 +44,11 @@ public class Client {
         this.prenom = prenom;
     }
 
-    public Date getDateNaissance() {
-        return dateNaissance;
+    public Collection<Compte> getComptes() {
+        return comptes;
     }
 
-    public void setDateNaissance(Date dateNaissance) {
-        this.dateNaissance = dateNaissance;
-    }
-
-    public Collection<Compte> getListeCompte() {
-        return listeCompte;
-    }
-
-    public void setListeCompte(Collection<Compte> listeCompte) {
-        this.listeCompte = listeCompte;
+    public void setComptes(Collection<Compte> comptes) {
+        this.comptes = comptes;
     }
 }

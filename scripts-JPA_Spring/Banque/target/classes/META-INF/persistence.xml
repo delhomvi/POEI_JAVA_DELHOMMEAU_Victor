@@ -10,6 +10,8 @@
         <class>org.example.model.Agence</class>
         <class>org.example.model.Client</class>
         <class>org.example.model.Compte</class>
+        <class>org.example.domain.Menu</class>
+        <class>org.example.domain.AddClient</class>
 
         <properties>
             <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>

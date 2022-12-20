@@ -7,36 +7,14 @@ import java.util.Collection;
 @Table(name="account")
 public class Compte {
     @Id
+    @GeneratedValue(strategy = GenerationType. IDENTITY )
     private int id;
+
     private String libel;
+
     private String IBAN;
-    private Double Solde;
 
-    @OneToOne
-    @JoinColumn(name="AGE_ID")
-    private Agence agenceID;
-
-    @ManyToMany
-    @JoinTable(name="CLI_ACC",
-    joinColumns = @JoinColumn(name = "CLI_ID",referencedColumnName = "id"),
-    inverseJoinColumns = @JoinColumn(name = "ACC_ID",referencedColumnName = "id"))
-    private Collection<Client> listeClient;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getLibel() {
-        return libel;
-    }
-
-    public void setLibel(String libel) {
-        this.libel = libel;
-    }
+    private Double solde;
 
     public String getIBAN() {
         return IBAN;
@@ -47,26 +25,45 @@ public class Compte {
     }
 
     public Double getSolde() {
-        return Solde;
+        return solde;
     }
 
     public void setSolde(Double solde) {
-        Solde = solde;
+        this.solde = solde;
     }
 
-    public Agence getAgenceID() {
-        return agenceID;
+    @ManyToOne
+    @JoinColumn(name="AGENCE_ID")
+    private Agence agence;
+
+    @ManyToMany
+    @JoinTable(name= "compte_client",
+            joinColumns = @JoinColumn(name= "COMPTE_ID", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name= "CLIENT_ID", referencedColumnName = "id"))
+    private Collection<Client> clients;
+
+
+    public String getLibel() {
+        return libel;
     }
 
-    public void setAgence(Agence agenceID) {
-        this.agenceID = agenceID;
+    public void setLibel(String libelle) {
+        this.libel = libelle;
     }
 
-    public Collection<Client> getListeClient() {
-        return listeClient;
+    public Agence getAgence() {
+        return agence;
     }
 
-    public void setListeClient(Collection<Client> listeClient) {
-        this.listeClient = listeClient;
+    public void setAgence(Agence agence) {
+        this.agence = agence;
+    }
+
+    public Collection<Client> getClients() {
+        return clients;
+    }
+
+    public void setClients(Collection<Client> clients) {
+        this.clients = clients;
     }
 }

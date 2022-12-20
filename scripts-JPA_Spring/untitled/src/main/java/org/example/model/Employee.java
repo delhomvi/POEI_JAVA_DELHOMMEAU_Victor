@@ -9,9 +9,6 @@ public class Employee {
     @Id
     private int id;
 
-
-
-
     @OneToOne
     @JoinColumn(name="P_SPACE")
     private ParkingSpace space;
