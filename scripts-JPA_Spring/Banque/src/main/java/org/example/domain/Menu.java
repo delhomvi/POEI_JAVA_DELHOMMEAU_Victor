@@ -17,7 +17,6 @@ public class Menu {
     public static void start(){
         System.out.println("Choix d'action sur la banque");
         initt();
-        show();
 
         System.out.println("1 - add account");
         System.out.println("2 - add client");
@@ -28,14 +27,17 @@ public class Menu {
         System.out.println("7 - modif agency");
         System.out.println("other - exit");
         String choice = scanner.nextLine();
-        if(choice.equals("1")){}
-        else if(choice.equals("2")){}
-        else if(choice.equals("3")){}
-        else if(choice.equals("4")){}
+        if(choice.equals("1")){addAccount();}
+        else if(choice.equals("2")){addClient();}
+        else if(choice.equals("3")){addAccount();}
+        else if(choice.equals("4")){show();}
         else if(choice.equals("5")){}
         else if(choice.equals("6")){}
         else if(choice.equals("7")){}
-        else{}
+        else{
+            em.close();
+            emf.close();
+        }
 
 
     }
@@ -189,34 +191,58 @@ public class Menu {
         System.out.println("-------- End show --------");
     }
 
-    public static void exo(){
-        System.out.println("-------- Start add --------");
-
-
+    public static void addClient(){
+        System.out.println("-------- Start add client--------");
         System.out.println("Add New Client ? (y/n): ");
-
         String newClient = scanner.nextLine();
         Client chosenClient;
-        Collection<Compte> newListComptes = new ArrayList<>();
-        Collection<Client> newListClients = new ArrayList<>();
-
         if (newClient.matches("y|yes|Y|YES|ye|YE")) {
             transac.begin();
-            Compte acc = new Compte();
             Client cli = new Client();
+
             System.out.println("Entrez les informations suivantes: ");
             System.out.println("Nom >");
             String Nom = scanner.nextLine();
+
             System.out.println("Prenom >");
             String Prenom = scanner.nextLine();
-            System.out.println("IBAN >");
-            String IBAN = scanner.nextLine();
-            System.out.println("Libel >");
-            String Libel = scanner.nextLine();
-            System.out.println("Solde >");
-            String balance= scanner.nextLine();
+
             System.out.println("Date naissance >");
             String dateBirth = scanner.nextLine();
+
+            cli.setPrenom(Prenom);
+            cli.setNom(Nom);
+            cli.setDateNaissance(new Date(dateBirth));
+
+            em.persist(cli);
+            transac.commit();
+        } else {
+            System.out.println("Exit");
+        }
+        System.out.println("-------- End add --------");
+    }
+
+    public static void addAccount(){
+        System.out.println("-------- Start add Account--------");
+        System.out.println("Add New Account ? (y/n): ");
+        String newClient = scanner.nextLine();
+        Client chosenClient;
+
+        if (newClient.matches("y|yes|Y|YES|ye|YE")) {
+            transac.begin();
+
+            Compte acc = new Compte();
+
+            System.out.println("Entrez les informations suivantes: ");
+            System.out.println("IBAN >");
+            String IBAN = scanner.nextLine();
+
+            System.out.println("Libel >");
+            String Libel = scanner.nextLine();
+
+            System.out.println("Solde >");
+            String balance= scanner.nextLine();
+
             System.out.println("Choisissez une agence:");
             List<Agence> Agences = em.createQuery("SELECT a FROM Agence a",Agence.class).getResultList();
             for(Agence a : Agences){
@@ -226,36 +252,38 @@ public class Menu {
             String id_agence = scanner.nextLine();
             Query query1 = em.createQuery("select a from Agence a where a.id="+id_agence);
             Agence agenceSelect = (Agence)query1.getSingleResult();
-            cli.setPrenom(Prenom);
-            cli.setNom(Nom);
-            cli.setDateNaissance(new Date(dateBirth));
+
+            System.out.println("Choisissez un bénéficiaire:");
+            List<Client> Clients = em.createQuery("SELECT a FROM Client a",Client.class).getResultList();
+            for(Client c : Clients){
+                System.out.println(String.format("%2s | %10s | %10s | %10s |",c.getId(),c.getNom(),c.getPrenom(),c.getDateNaissance()));
+            }
+            System.out.println("ID client >");
+            String id_client = scanner.nextLine();
+            Query query2 = em.createQuery("select a from Client c where c.id="+id_client);
+            Client clientSelected = (Client)query2.getSingleResult();
+
+
+
             acc.setIBAN(IBAN);
             acc.setLibel(Libel);
             acc.setSolde(Double.parseDouble(balance));
             acc.setAgence(agenceSelect);
             Collection<Client> collCli = new ArrayList();
-            collCli.add(cli);
+            collCli.add(clientSelected);
             acc.setClients(collCli);
+
             em.persist(acc);
-            em.persist(cli);
             transac.commit();
         } else {
             System.out.println("DONE");
         }
 
         System.out.println("-------- End add --------");
+    }
 
+    public static void exo(){
 
-        System.out.println("-------- Init show Two--------");
-        transac.begin();
-        Query query2 = em.createNativeQuery("SELECT * from account",Compte.class);
-        List<Compte> listComptess2 = query2.getResultList();
-        for(Object c: listComptess2){
-            Compte cc = (Compte) c;
-            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
-        }
-        transac.commit();
-        System.out.println("-------- End show --------");
 
 
         System.out.println("-------- Start modif account --------");
@@ -290,20 +318,9 @@ public class Menu {
         System.out.println("-------- End Modif --------");
 
 
-        System.out.println("-------- Init show Three--------");
-        transac.begin();
-        Query query4 = em.createNativeQuery("SELECT * from account",Compte.class);
-        List<Compte> listComptess3 = query4.getResultList();
-        for(Object c: listComptess3){
-            Compte cc = (Compte) c;
-            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
-        }
-        transac.commit();
-        System.out.println("-------- End show --------");
 
 
-        em.close();
-        emf.close();
+
     }
 
 }
