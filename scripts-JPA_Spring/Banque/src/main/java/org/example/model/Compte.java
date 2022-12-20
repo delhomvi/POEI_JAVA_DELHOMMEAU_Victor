@@ -12,6 +12,14 @@ public class Compte {
 
     private String libel;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     private String IBAN;
 
     private Double solde;

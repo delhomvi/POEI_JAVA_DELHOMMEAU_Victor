@@ -149,16 +149,18 @@ public class Menu {
 
         System.out.println("-------- End init --------");
 
+
         System.out.println("-------- Init show --------");
         transac.begin();
         Query query = em.createNativeQuery("SELECT * from account",Compte.class);
         List<Compte> listComptess = query.getResultList();
         for(Object c: listComptess){
             Compte cc = (Compte) c;
-            System.out.println(String.format("----\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
+            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
         }
         transac.commit();
         System.out.println("-------- End show --------");
+
 
         System.out.println("-------- Start add --------");
 
@@ -215,13 +217,58 @@ public class Menu {
 
         System.out.println("-------- End add --------");
 
+
         System.out.println("-------- Init show Two--------");
         transac.begin();
         Query query2 = em.createNativeQuery("SELECT * from account",Compte.class);
         List<Compte> listComptess2 = query2.getResultList();
         for(Object c: listComptess2){
             Compte cc = (Compte) c;
-            System.out.println(String.format("----\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
+            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
+        }
+        transac.commit();
+        System.out.println("-------- End show --------");
+
+
+        System.out.println("-------- Start modif account --------");
+        System.out.println("Which one you want to modify ? (ID): ");
+        String modClienIDstr = scanner.nextLine();
+        int modClienID = Integer.parseInt(modClienIDstr);
+        transac.begin();
+        Compte accountToMod = em.find(Compte.class,modClienID);
+        System.out.println("Entrez les nouvelles informations: ");
+        System.out.println("IBAN >");
+        String IBANN = scanner.nextLine();
+        System.out.println("Libel >");
+        String Libell = scanner.nextLine();
+        System.out.println("Solde >");
+        String balancee= scanner.nextLine();
+        System.out.println("Choisissez une agence:");
+        List<Agence> Agencess = em.createQuery("SELECT a FROM Agence a",Agence.class).getResultList();
+        for(Agence a : Agencess){
+            System.out.println(String.format("%10s | %10s |",a.getId(),a.getAdresse()));
+        }
+        System.out.println("ID agence >");
+        String id_agencee = scanner.nextLine();
+        Query query3 = em.createQuery("select a from Agence a where a.id="+id_agencee);
+        Agence agenceSelectt = (Agence)query3.getSingleResult();
+        accountToMod.setIBAN(IBANN);
+        accountToMod.setLibel(Libell);
+        accountToMod.setSolde(Double.parseDouble(balancee));
+        accountToMod.setAgence(agenceSelectt);
+        em.flush();
+        transac.commit();
+
+        System.out.println("-------- End Modif --------");
+
+
+        System.out.println("-------- Init show Three--------");
+        transac.begin();
+        Query query4 = em.createNativeQuery("SELECT * from account",Compte.class);
+        List<Compte> listComptess3 = query4.getResultList();
+        for(Object c: listComptess3){
+            Compte cc = (Compte) c;
+            System.out.println(String.format("----\n ID: %s\n LIBEL: %25s \n IBAN: %25s \n Adresse agence: %25s\n",cc.getId(),cc.getLibel(),cc.getIBAN(),cc.getAgence().getAdresse()));
         }
         transac.commit();
         System.out.println("-------- End show --------");
