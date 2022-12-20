@@ -8,15 +8,41 @@ import javax.persistence.*;
 import java.util.*;
 
 public class Menu {
-    public static void exo(){
+    private static EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExoBanque");
+    private static EntityManager em = emf.createEntityManager();
+    private static EntityTransaction transac = em.getTransaction();
 
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void start(){
+        System.out.println("Choix d'action sur la banque");
+        initt();
+        show();
+
+        System.out.println("1 - add account");
+        System.out.println("2 - add client");
+        System.out.println("3 - add agency");
+        System.out.println("4 - show everything");
+        System.out.println("5 - modif account");
+        System.out.println("6 - modif client");
+        System.out.println("7 - modif agency");
+        System.out.println("other - exit");
+        String choice = scanner.nextLine();
+        if(choice.equals("1")){}
+        else if(choice.equals("2")){}
+        else if(choice.equals("3")){}
+        else if(choice.equals("4")){}
+        else if(choice.equals("5")){}
+        else if(choice.equals("6")){}
+        else if(choice.equals("7")){}
+        else{}
+
+
+    }
+
+    public static void initt(){
         System.out.println("-------- Init exo --------");
-
         // INIT -----------------------------------------------------
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ExoBanque");
-        EntityManager em = emf.createEntityManager();
-        EntityTransaction transac = em.getTransaction();
-
         // AGENCE -----------------------------------------------------
         transac.begin();
         Agence agence = new Agence();
@@ -148,8 +174,9 @@ public class Menu {
         transac.commit();
 
         System.out.println("-------- End init --------");
+    }
 
-
+    public static void show(){
         System.out.println("-------- Init show --------");
         transac.begin();
         Query query = em.createNativeQuery("SELECT * from account",Compte.class);
@@ -160,11 +187,12 @@ public class Menu {
         }
         transac.commit();
         System.out.println("-------- End show --------");
+    }
 
-
+    public static void exo(){
         System.out.println("-------- Start add --------");
 
-        Scanner scanner = new Scanner(System.in);
+
         System.out.println("Add New Client ? (y/n): ");
 
         String newClient = scanner.nextLine();
