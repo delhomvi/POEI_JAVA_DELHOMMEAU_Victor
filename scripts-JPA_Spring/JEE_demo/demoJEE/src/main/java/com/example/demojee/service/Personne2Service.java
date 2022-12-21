@@ -8,10 +8,9 @@ import java.util.Arrays;
 import java.util.List;
 
 @Service
-public class PersonneService implements IPersonneService {
-
+public class Personne2Service implements IPersonneService {
     @Override
     public List<Personne> getPersonnes() {
-        return Arrays.asList(new Personne(1,"toto","titi"),new Personne(2,"tata","titi"));
+        return Arrays.asList(new Personne(3,"Papa","Noel"),new Personne(4,"Maman","Noel"));
     }
 }
