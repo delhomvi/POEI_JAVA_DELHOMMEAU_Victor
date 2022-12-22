@@ -4,6 +4,7 @@ import com.example.demospring.entity.Produit;
 import com.example.demospring.interfaces.IDAO;
 import com.example.demospring.tools.ServiceHibernate;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,7 +33,7 @@ public class ProduitService implements IDAO<Produit> {
     @Override
     public boolean update(Produit o) {
         session.beginTransaction();
-        session.persist(o);
+        session.update(o);
         session.getTransaction().commit();
         return true;
     }
@@ -47,11 +48,13 @@ public class ProduitService implements IDAO<Produit> {
 
     @Override
     public Produit findById(int id) {
-        return null;
+        Produit res = null;
+        res = (Produit) session.get(Produit.class,id);
+        return res;
     }
 
     @Override
     public List<Produit> findAll() {
-        return null;
+        return session.createQuery("SELECT p FROM Produit p", Produit.class).list();
     }
 }
