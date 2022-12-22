@@ -18,7 +18,6 @@ public class ProduitService implements IDAO<Produit> {
 
     public ProduitService(){
         emf = Persistence.createEntityManagerFactory("Exercicejpa");
-
         em = emf.createEntityManager();
     }
 
