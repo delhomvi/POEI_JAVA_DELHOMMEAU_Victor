@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -20,6 +21,14 @@ public class TodoController {
     public Todo createTodo(@RequestBody Todo todo){
         if(todoService.create(todo)){
             return todo;
+        }
+        return null;
+    }
+
+    @PostMapping("/create/{title}/{descr}/{date}")
+    public Todo createTodo(@PathVariable String title,@PathVariable String descr,@PathVariable String date){
+        if(todoService.create(new Todo(title,descr,new Date(date),false))){
+            return new Todo(title,descr,new Date(date),false);
         }
         return null;
     }

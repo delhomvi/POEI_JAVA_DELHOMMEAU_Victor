@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TodoList</title>
+</head>
+<script>
+
+    function createTODOres(data, status)
+    {
+        $("#resultTodo").text( data );
+    }
+    function createTodo()
+    {
+        $.get("http://localhost:8080/create/"+$("#title").val()+"/"+$("#descr").val()+"/"+$("#date").val(),createTODOres);
+    }
+
+</script>
+<body>
+
+<div>
+    <h1>Todo list create</h1>
+    <label for="title"></label><input id="title" placeholder="tiltle of todo"><br>
+    <label for="descr"></label><input id="descr" placeholder="description of todo"><br>
+    <label for="date"></label><input id="date" placeholder="date au format AAAA-MM-JJ"><br>
+    <button onclick="createTodo()">Create TODO</button><br>
+    <div id="resultTodo">_________</div>
+</div>
+
+</body>
+</html>
