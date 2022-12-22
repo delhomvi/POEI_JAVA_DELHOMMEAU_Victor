@@ -30,12 +30,12 @@ public class TodoController {
     }
 
     @GetMapping("/read")
-    public List<Todo> findProduct(){
+    public List<Todo> findTodo(){
         return todoService.findAll();
     }
 
     @PostMapping("/update/{id}")
-    public Todo updateProduct(@PathVariable Integer id,@RequestBody Todo todo){
+    public Todo updateTodo(@PathVariable Integer id,@RequestBody Todo todo){
         Todo exisTodo = todoService.findById(id);
         if(exisTodo!=null){
             exisTodo.setTitle(todo.getTitle());
@@ -50,7 +50,7 @@ public class TodoController {
     }
 
     @GetMapping("/delete/{id}")
-    public String deleteProduct(@PathVariable Integer id){
+    public String deleteTodo(@PathVariable Integer id){
         Todo exisProduit = todoService.findById(id);
         if(exisProduit!=null){
             if(todoService.delete(exisProduit)){
@@ -60,5 +60,26 @@ public class TodoController {
         return "id n'existe pas";
     }
 
+    @PostMapping("/updateState/{id}")
+    public Todo updateTodoState(@PathVariable Integer id) {
+        Todo exisTodo = todoService.findById(id);
+        if(exisTodo!=null){
+            exisTodo.setState(!exisTodo.isState());
+            if(todoService.update(exisTodo)){
+                return exisTodo;
+            }
+        }
+        return exisTodo;
+    }
+
+    @GetMapping("/doneTodo")
+    public List<Todo> findDoneTodo(){
+        return todoService.findAllDone();
+    }
+
+    @GetMapping("/notDoneTodo")
+    public List<Todo> findNotDoneTodo(){
+        return todoService.findAllNotDone();
+    }
 
 }

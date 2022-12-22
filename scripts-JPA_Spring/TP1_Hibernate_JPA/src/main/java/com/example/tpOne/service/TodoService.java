@@ -54,4 +54,8 @@ public class TodoService implements ITodo {
     public List<Todo> findAll() {
         return session.createQuery("SELECT t FROM Todo t", Todo.class).list();
     }
+
+
+    public List<Todo> findAllDone(){return session.createQuery("SELECT t FROM Todo t where state=true", Todo.class).list();}
+    public List<Todo> findAllNotDone(){return session.createQuery("SELECT t FROM Todo t where state=false", Todo.class).list();}
 }
