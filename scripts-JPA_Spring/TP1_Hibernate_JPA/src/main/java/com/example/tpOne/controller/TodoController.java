@@ -39,7 +39,7 @@ public class TodoController {
         Todo exisTodo = todoService.findById(id);
         if(exisTodo!=null){
             exisTodo.setTitle(todo.getTitle());
-            exisTodo.setDesc(todo.getDesc());
+            exisTodo.setDescr(todo.getDescr());
             exisTodo.setDate(todo.getDate());
             exisTodo.setState(todo.isState());
             if(todoService.update(exisTodo)){

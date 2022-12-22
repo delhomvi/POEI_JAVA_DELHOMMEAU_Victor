@@ -13,7 +13,7 @@ public class Todo {
     @GeneratedValue
     private int id;
     private String title;
-    private String desc;
+    private String descr;
     @Temporal(TemporalType.DATE)
     private Date date;
     private boolean state;
