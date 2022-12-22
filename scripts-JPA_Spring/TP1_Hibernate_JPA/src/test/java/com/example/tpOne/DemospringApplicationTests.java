@@ -1,4 +1,4 @@
-package com.example.demospring;
+package com.example.tpOne;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

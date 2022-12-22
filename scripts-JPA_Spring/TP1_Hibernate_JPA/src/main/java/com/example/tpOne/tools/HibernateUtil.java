@@ -1,4 +1,4 @@
-package com.example.demospring.tools;
+package com.example.tpOne.tools;
 
 import org.hibernate.HibernateException;
 import org.hibernate.SessionFactory;
