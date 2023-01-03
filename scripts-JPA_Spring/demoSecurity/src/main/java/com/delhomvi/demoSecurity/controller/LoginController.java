@@ -1,2 +1,4 @@
-package com.delhomvi.demoSecurity.controller;public class LoginController {
+package com.delhomvi.demoSecurity.controller;
+
+public class LoginController {
 }
